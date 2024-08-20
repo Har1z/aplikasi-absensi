@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("localhost","root","","attendance_management");
+    $con = mysqli_connect("absensi.sekolahlaboratoriumjakarta.com","u736687820_yaylabtech","Absensilab@11_","u736687820_lab_attendance");
 
     // Check connection
     if (mysqli_connect_errno()) {
