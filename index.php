@@ -52,6 +52,7 @@ require "../private/function/db_init.php";
 
                                 <!-- Clock & date -->
                                 <div class="a-clock" style="">
+                                    <?php include "../private/template/analog-clock.php"; ?>
                                 </div>
                                 <div id="d-clock"></div>
                                 <div class="display-date">
