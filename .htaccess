@@ -1,20 +1,13 @@
-# Mengaktifkan mod_rewrite
+# REMOVE /PUBLIC/ URL
 RewriteEngine On
+RewriteBase /public/
 
-# Mengarahkan semua permintaan ke index.php
-RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+
+# REMOVE .PHP EXTENSION ON URL
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ /index.php/$1 [L]
-
-# Mengatur direktori root
-RewriteBase /
-
-# Mengatur domain utama
-RewriteCond %{HTTP_HOST} ^www\.absensi\.sekolahlaboratoriumjakarta\.com$ [NC]
-RewriteRule ^(.*)$ https://absensi.sekolahlaboratoriumjakarta.com/$1 [L,R=301]
-
-# Mengamankan akses ke file sensitif
-<FilesMatch "\.(htaccess|htpasswd|ini|phar|zip|sql)$">
-  Order allow,deny
-  Deny from all
-</FilesMatch>
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 
