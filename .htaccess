@@ -26,10 +26,10 @@ RewriteRule ^(.*)$ public/$1.php [NC,L]
 AddDefaultCharset UTF-8
 
 # Melindungi file dan folder sensitif dari akses luar
-<FilesMatch "\.(env|htaccess|htpasswd|ini|log|sh|sql)$">
-    Order allow,deny
-    Deny from all
-</FilesMatch>
+# <FilesMatch "\.(env|htaccess|htpasswd|ini|log|sh|sql)$">
+#     Order allow,deny
+#     Deny from all
+# </FilesMatch>
 
 # Mengatur caching untuk file statis
 <IfModule mod_expires.c>
