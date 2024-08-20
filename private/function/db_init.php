@@ -1,5 +1,5 @@
 <?php
-    $con = mysqli_connect("srv1321.hstgr.io","u736687820_yaylabtech","Absensilab@11_","u736687820_lab_attendance", "3306");
+    $con = mysqli_connect("localhost","u736687820_yaylabtech","Absensilab@11_","u736687820_lab_attendance", "3306");
 
     // Check connection
     if (mysqli_connect_errno()) {
