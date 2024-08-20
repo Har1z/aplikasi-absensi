@@ -3,7 +3,7 @@
     RewriteEngine On
 
     # Mengatur Base URL
-    RewriteBase /
+    RewriteBase /absensi.sekolahlaboratoriumjakarta.com
 
     # Arahkan semua permintaan ke public/index.php jika file atau direktori tidak ada
     RewriteCond %{REQUEST_FILENAME} !-f
