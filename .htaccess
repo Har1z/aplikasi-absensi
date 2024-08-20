@@ -1,0 +1,13 @@
+# REMOVE /PUBLIC/ URL
+RewriteEngine On
+RewriteBase /QR-attendance-PHP/
+
+RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
+RewriteRule ^ %1 [L,NE,R=302]
+
+RewriteRule ^((?!public/).*)$ public/$1 [L,NC]
+
+# REMOVE .PHP EXTENSION ON URL
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.*)$ $1.php [NC,L] 

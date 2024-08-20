@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.a-clock {
+    position: absolute; 
+    height: auto; 
+    width: 240px ; 
+    transform: translate(105px, -700px);
+    /* translate(X pos, Y pos) */
+}
+
+#d-clock {
+    position: absolute; 
+    margin: 20px auto;
+    padding: 0;
+    width: auto;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 34px;
+    font-family: "Lato", sans-serif;
+    transform: translate(165px, -300px);
+}
+
+.display-date {
+    position: absolute;
+    font-family: "Lato", sans-serif;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    transform: translate(130px, -235px);
+}
+
+@media (max-width: 1024px) {
+    .a-clock {
+        position: absolute; 
+        height: auto; 
+        width: 240px ; 
+        transform: translate(70px, -700px);
+    }
+
+    #d-clock {
+        line-height: 40px;
+        font-size: 34px;
+        transform: translate(120px, -300px);
+    }
+    
+    .display-date {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #fff;
+        transform: translate(84px, -235px);
+    }
+}
+
+@media (max-width: 768px) {
+    .a-clock {
+        position: absolute; 
+        height: auto; 
+        width: 200px ; 
+        transform: translate(75px, -650px);
+    }
+
+    #d-clock {
+        line-height: 40px;
+        font-size: 34px;
+        transform: translate(106px, -275px);
+    }
+    
+    .display-date {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #fff;
+        transform: translate(70px, -215px);
+    }
+}
