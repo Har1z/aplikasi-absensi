@@ -8,7 +8,7 @@
     # Arahkan semua permintaan ke public/index.php jika file atau direktori tidak ada
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^ public/index.php [L]
+    RewriteRule ^ ./public/index.php [L]
 </IfModule>
 
 # Mengatur Pengalihan HTTP ke HTTPS (jika menggunakan HTTPS)
