@@ -3,7 +3,7 @@
 
     if($_SESSION['login']==true){
         if ($_SESSION['role'] == "admin") {
-            header("location: ./admin");
+            header("location: ./guru");
             ob_end_flush();
             die();
         } else if ($_SESSION['role'] == "guru") {

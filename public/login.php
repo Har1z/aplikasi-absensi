@@ -4,7 +4,7 @@ ob_start();
 
 if(isset($_SESSION['login'])){
     if ($_SESSION['role'] == "admin") {
-        header("location: ./admin");
+        header("location: ./guru");
         ob_end_flush();
         die();
     } else if ($_SESSION['role'] == "guru") {
@@ -130,7 +130,7 @@ require "../private/function/db_init.php";
                                                         $_SESSION['login'] = true;
                                                         echo $role; // you get the role exactly where you stop
                                                         if ($role == "admin") {
-                                                            header("location: ./admin");
+                                                            header("location: ./guru");
                                                             ob_end_flush();
                                                             die();
                                                         } else if ($role == "guru") {
