@@ -1,6 +1,6 @@
 # REMOVE /PUBLIC/ URL
 RewriteEngine On
-RewriteBase /QR-attendance-PHP/
+RewriteBase /public/
 
 RewriteCond %{THE_REQUEST} /public/([^\s?]*) [NC]
 RewriteRule ^ %1 [L,NE,R=302]
