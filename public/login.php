@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require "../private/function/db_init.php";
+// require "../private/function/db_init.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
