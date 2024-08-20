@@ -173,7 +173,7 @@ $telat = date('Hi') > 705;
             font-size: 1.25rem
         }
 
-        .show {
+        .shows {
             left: 0
         }
 
