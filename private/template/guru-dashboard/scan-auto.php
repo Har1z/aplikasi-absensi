@@ -232,7 +232,7 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
         async function cekData(code) {
             jQuery.ajax({
-                url: "./scan/cek",
+                url: "./scan/cek.php",
                 type: 'post',
                 data: {
                     'code': code,

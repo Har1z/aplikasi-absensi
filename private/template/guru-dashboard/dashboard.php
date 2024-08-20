@@ -380,10 +380,6 @@
 
             // Your code to run since DOM is loaded and ready
         });
-
-        function myClick() {
-            console.log("hello");
-        }
     </script>
 </body>
 
