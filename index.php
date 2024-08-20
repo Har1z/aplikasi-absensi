@@ -17,7 +17,7 @@
         }
         die();
     } else {
-        header('location: public/login.php');
+        header('location: public/login');
         die(); //seriously i better off dead rather than exit()
     }
 ?>
