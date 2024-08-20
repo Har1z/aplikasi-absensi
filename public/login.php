@@ -1,8 +1,5 @@
 <?php
 session_start();
-ob_start();
-
-require "../private/function/db_init.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
