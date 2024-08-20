@@ -1,4 +1,26 @@
+<?php
+session_start();
+ob_start();
 
+if(isset($_SESSION['login'])){
+    if ($_SESSION['role'] == "admin") {
+        header("location: ./admin");
+        ob_end_flush();
+        die();
+    } else if ($_SESSION['role'] == "guru") {
+        header("location: ./guru");
+        ob_end_flush();
+        die();
+    } else if ($_SESSION['role'] == "siswa") {
+        header("location: ./siswa");
+        ob_end_flush();
+        die();
+    }
+    die();
+}
+
+require "../private/function/db_init.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 
