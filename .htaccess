@@ -3,7 +3,7 @@
     RewriteEngine On
 
     # Mengatur Base URL
-    RewriteBase /absensi.sekolahlaboratoriumjakarta.com/
+    RewriteBase /public/
 
     # Arahkan semua permintaan ke public/index.php jika file atau direktori tidak ada
     RewriteCond %{REQUEST_FILENAME} !-f
@@ -26,10 +26,10 @@ RewriteRule ^(.*)$ public/$1.php [NC,L]
 AddDefaultCharset UTF-8
 
 # Melindungi file dan folder sensitif dari akses luar
-# <FilesMatch "\.(env|htaccess|htpasswd|ini|log|sh|sql)$">
-#     Order allow,deny
-#     Deny from all
-# </FilesMatch>
+<FilesMatch "\.(env|htaccess|htpasswd|private|ini|log|sh|sql)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
 
 # Mengatur caching untuk file statis
 <IfModule mod_expires.c>
