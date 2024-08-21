@@ -381,7 +381,7 @@ $telat = date('Hi') > 705;
                                                 <th scope="col">#</th>
                                                 <th scope="col">NISN</th>
                                                 <th scope="col">Nama Siswa</th>
-                                                <th scope="col">kelas/Jurusan</th>
+                                                <th scope="col">kelas / Jurusan</th>
                                                 <th scope="col" class="text-center">Kehadiran</th>
                                                 <th scope="col" class="text-center">Jam masuk</th>
                                                 <th scope="col" class="text-center">Jam pulang</th>
