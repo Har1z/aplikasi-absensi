@@ -16,20 +16,20 @@ $filterTanggal = $_POST['tanggal'] ?? date('Y').'-'.date('m').'-'.date('d');
 switch($filterKelas){
 
     case '10' :
-        $querySiswa = mysqli_query($con, "SELECT nisn, nama FROM siswa WHERE kelas='10' ORDER BY nama ASC");
+        $querySiswa = mysqli_query($con, "SELECT nisn, nama, kelas, jurusan FROM siswa WHERE kelas='10' ORDER BY nama ASC");
         break;
 
     case '11' :
-        $querySiswa = mysqli_query($con, "SELECT nisn, nama FROM siswa WHERE kelas='11' ORDER BY nama ASC");
+        $querySiswa = mysqli_query($con, "SELECT nisn, nama, kelas, jurusan FROM siswa WHERE kelas='11' ORDER BY nama ASC");
         break;
 
     case '12' :
-        $querySiswa = mysqli_query($con, "SELECT nisn, nama FROM siswa WHERE kelas='12' ORDER BY nama ASC");
+        $querySiswa = mysqli_query($con, "SELECT nisn, nama, kelas, jurusan FROM siswa WHERE kelas='12' ORDER BY nama ASC");
         break;
 
     case '0' :
     default :
-        $querySiswa = mysqli_query($con, "SELECT nisn, nama FROM siswa ORDER BY nama ASC");
+        $querySiswa = mysqli_query($con, "SELECT nisn, nama, kelas, jurusan FROM siswa ORDER BY nama ASC");
         break;
     }
 
@@ -381,6 +381,7 @@ $telat = date('Hi') > 705;
                                                 <th scope="col">#</th>
                                                 <th scope="col">NISN</th>
                                                 <th scope="col">Nama Siswa</th>
+                                                <th scope="col">kelas/Jurusan</th>
                                                 <th scope="col" class="text-center">Kehadiran</th>
                                                 <th scope="col" class="text-center">Jam masuk</th>
                                                 <th scope="col" class="text-center">Jam pulang</th>
@@ -426,6 +427,7 @@ $telat = date('Hi') > 705;
                                                         <th scope="row"> <?= $nomor ?> </th>
                                                         <td><?= $data['nisn'] ?></td>
                                                         <td><?= $data['nama'] ?></td>
+                                                        <td><?= $data['kelas'] ?> / <?= $data['jurusan'] ?></td>
                                                         <td>
                                                             <p class="p-2 w-100 btn btn-<?= $kehadiran['color']; ?> text-center">
                                                                 <b><?= $kehadiran['text']; ?></b>
