@@ -2,6 +2,7 @@
 session_start();
 ob_start();
 
+// idk what am doing but please dont remove this it would be broken
 if(isset($_SESSION['login'])){
     if ($_SESSION['role'] == "admin") {
         header("location: ./guru");

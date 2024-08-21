@@ -287,8 +287,8 @@ require "../../private/function/db_init.php";
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="noHpSiswaInput" class="form-label">No. HP siswa</label>
-                                        <input type="number" class="form-control" id="noHpSiswaInput" name="noHpSiswa" required >
+                                        <label for="noHpSiswaInput" class="form-label">No. HP siswa (opsional)</label>
+                                        <input type="number" class="form-control" id="noHpSiswaInput" name="noHpSiswa" >
                                     </div>
 
                                     <div class="mb-3">
@@ -356,19 +356,15 @@ require "../../private/function/db_init.php";
                     if(isset($_POST['submitForm'])){
                         $nisn = htmlspecialchars($_POST['nisn']);
                         $nama = htmlspecialchars($_POST['nama']);
-                        $noSiswa = htmlspecialchars($_POST['noHpSiswa']);
+                        if(isset($_POST['noHpSiswa'])) {
+                            $noSiswa = htmlspecialchars($_POST['noHpSiswa']);
+                        } else {
+                            $noSiswa = "-";
+                        }
                         $noOrtu = htmlspecialchars($_POST['noHpOrtu']);
                         $jenisKelamin = htmlspecialchars($_POST['jenisKelamin']);
                         $kelas = htmlspecialchars($_POST['kelas']);
                         $jurusan = htmlspecialchars($_POST['jurusan']);
-
-                        // echo var_dump($nisn);
-                        // echo var_dump($nama);
-                        // echo var_dump($noSiswa);
-                        // echo var_dump($noOrtu);
-                        // echo var_dump($jenisKelamin);
-                        // echo var_dump($kelas);
-                        // echo var_dump($jurusan);
 
                         //i checking for the duplicated student data in case the admin forgot and input the data twice
                         $query = mysqli_query($con, "SELECT * FROM siswa WHERE nisn='$nisn'");
