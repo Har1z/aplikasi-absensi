@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 ?>
                 <div class="row">
                     <div class="col-auto pr-1 pt-1">
-                        <input class="form-check" type="radio" name="kehadiran" id="k" value="<?= $i ?>" <?= ($data['kehadiran'] == $i) ? 'checked' : '' ?> >
+                        <input class="form-check" type="radio" name="kehadiran" id="k-<?= $i ?>" value="<?= $i ?>" <?= ($data['kehadiran'] == $i) ? 'checked' : '' ?> >
                     </div>
                     <div class="col">
-                        <label class="form-check-label pl-0" for="k">
+                        <label class="form-check-label pl-0" for="k-<?= $i ?>">
                             <h6 class="text-<?= $kehadiran['color']; ?>"><?= $kehadiran['text']; ?></h6>
                         </label>
                     </div>

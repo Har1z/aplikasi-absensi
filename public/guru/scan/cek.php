@@ -2,10 +2,15 @@
 require "../../../private/function/db_init.php";
 
 require_once('../../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
+require_once('../../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
     
 $token="rw70t1qrzrhqs9fc"; // Ultramsg.com token
 $instance_id="instance92651"; // Ultramsg.com instance id
 $client = new UltraMsg\WhatsAppApi($token,$instance_id);
+
+$token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
+$instance_id_2="instance92836"; // Ultramsg.com instance id
+$client_2 = new UltraMsgs\WhatsAppApi($token_2,$instance_id_2);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -90,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 if (mysqli_num_rows($sudahPulang) != 0) {
                     showErrorView('Anda sudah pulang hari ini', $data, mysqli_fetch_array($cekAbsen));
-                } else if (mysqli_num_rows($sudahPulang) != 0) {
+                } else if (mysqli_num_rows($sudahPulang) == 0) {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
@@ -98,7 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     // $nomor = "+62" . substr($data['no_orangtua'], 1);
                     $to="+6281284612453"; // change to $nomor and un-comment code above
                     $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
-                    $api=$client->sendChatMessage($to,$body);
+                    $api=$client_2->sendChatMessage($to,$body);
                 } else {
                     showErrorView('Terjadi kesalahan');
                 }

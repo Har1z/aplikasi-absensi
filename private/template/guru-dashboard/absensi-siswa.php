@@ -314,7 +314,7 @@ $telat = date('Hi') > 705;
                         <h4 class="fw-bold mb-1">Daftar Kelas</h4>
                         <p class="fw-light">Silahkan pilih kelas</p>
                         
-                        <form action="" method="post">
+                        <form id="filter" action="" method="post">
                         <div class="row mb-4">
 
                             <div class="col-12 col-lg-2 mb-2">
@@ -371,6 +371,7 @@ $telat = date('Hi') > 705;
                                         </path>
                                     </svg> Refresh</button>
                                 </form>
+                                <a href="./?tab=absen-manual" type="button" class="btn btn-primary mb-3" style="user-select: none;"><span class=""> Absen Manual </span></a>
                             </div>
 
                             <div class="col-12">
@@ -407,13 +408,19 @@ $telat = date('Hi') > 705;
                                                     
                                                     $nisn = $data['nisn'];
                                                     $queryAbsensi = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$filterTanggal'");
+                                                    $queryPresensi = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$filterTanggal' AND kehadiran BETWEEN '1' AND '3'");
+                                                    $presensi = mysqli_num_rows($queryPresensi);
                                                     $check = mysqli_num_rows($queryAbsensi);
                                                     $absensi = mysqli_fetch_array($queryAbsensi);
                                                     
                                                     if ($check == 0) {
                                                         $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`) VALUES ('$nisn','$filterTanggal')");
                                                         ?>
-                                                        <meta http-equiv="refresh" content="1; url=./?tab=absensi-siswa" />
+                                                        <script>
+                                                            setTimeout(function() {
+                                                                document.getElementById("filter").submit();
+                                                            }, 1000);
+                                                        </script>
                                                         <?php
                                                     }
 
@@ -422,6 +429,15 @@ $telat = date('Hi') > 705;
                                                     if ($telat) {
                                                         $queryTanpaKeterangan = mysqli_query($con, "UPDATE absen SET kehadiran='4' WHERE nisn='$nisn' AND kehadiran='0' AND tgl='$todayDate' ");
                                                     }
+
+                                                    if (date('Hi') >= 1200) {
+                                                        $presensi = 1;
+                                                    } else if ($filterTanggal != $todayDate) {
+                                                        $presensi = 1;
+                                                    }
+
+                                                    if ($presensi != 0){
+
                                                     ?>
                                                     <tr>
                                                         <th scope="row"> <?= $nomor ?> </th>
@@ -438,10 +454,15 @@ $telat = date('Hi') > 705;
                                                         <td class="text-center"><?= $absensi['ket'] ?? '-' ?></td>
                                                         <td class="user-select-none text-center">
                                                         <button data-bs-toggle="modal" data-bs-target="#ubahModal" onclick="getDataKehadiran('<?= $data['nisn']; ?>', '<?= $filterTanggal ?>')" class="btn btn-primary p-2" id="<?= $absensi['nisn']; ?>">Edit</button>
+                                                        <button onclick="if (confirm('Yakin ingin menghapus data kehadiran?')) { hapusKehadiran('<?= $data['nisn']; ?>'); } return false;" class="btn btn-danger p-2" id="<?= $absensi['nisn']; ?>">Delete</button>
                                                         </td>
                                                     </tr>
                                                     <?php
+
+                                                    }
                                                     $nomor++;
+
+
                                                 }
                                                 ;
                                             }
@@ -573,6 +594,7 @@ $telat = date('Hi') > 705;
             url: "./?tab=edit-absensi",
             type: 'post',
             data: {
+                'edit': true,
                 'tgl': '<?= $filterTanggal ?>',
                 'nisn': form[0]['value'],
                 'kehadiran': form[1]['value'],
@@ -583,6 +605,27 @@ $telat = date('Hi') > 705;
             success: function(response, status, xhr) {
                 // console.log(status);
                 alert('Berhasil ubah kehadiran');
+                $('#refresh').html(response);
+            },
+            error: function(xhr, status, thrown) {
+                console.log(thrown);
+            }
+        });
+    }
+
+    function hapusKehadiran(nisn) {
+
+        jQuery.ajax({
+            url: "./?tab=edit-absensi",
+            type: 'post',
+            data: {
+                'delete': true,
+                'tgl': '<?= $filterTanggal ?>',
+                'nisn': nisn
+            },
+            success: function(response, status, xhr) {
+                // console.log(status);
+                alert('Data berhasil dihapus');
                 $('#refresh').html(response);
             },
             error: function(xhr, status, thrown) {

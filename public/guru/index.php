@@ -93,6 +93,11 @@
         case "scan-barcode":
             require "../../private/template/guru-dashboard/scan-auto.php";
             break;
+        
+        case "absen-manual":
+            $absensiSiswa = "active";
+            require "../../private/template/guru-dashboard/absen-manual.php";
+            break;
 
         default:
             $dashboard = "active";
