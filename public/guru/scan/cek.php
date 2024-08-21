@@ -90,7 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 if (mysqli_num_rows($sudahPulang) != 0) {
                     showErrorView('Anda sudah pulang hari ini', $data, mysqli_fetch_array($cekAbsen));
-                } else {
+                } else if (mysqli_num_rows($sudahPulang) != 0) {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
@@ -99,6 +99,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     $to="+6281284612453"; // change to $nomor and un-comment code above
                     $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
                     $api=$client->sendChatMessage($to,$body);
+                } else {
+                    showErrorView('Terjadi kesalahan');
                 }
                 break;
 
