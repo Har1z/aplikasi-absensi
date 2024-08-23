@@ -442,7 +442,7 @@
                                                                 <a href="./?tab=edit-data-siswa&q=<?= $data['nisn'] ?>" type="button" class="btn btn-primary">Edit</a>
                                                                 <a href="./?tab=delete-siswa&q=<?= $data['nisn'] ?>" onclick="return confirm('Yakin ingin menghapus data?')" type="button" class="btn btn-danger">Delete</a>
                                                                 <!-- <a type="button" class="btn btn-success">Download QR</a> -->
-                                                                <a class="btn btn-success mt-3" href="../resources/images/QRcode/<?= $data['nama'] ?>-QR.png" download="<?= $data['nama'].'_'.$data['kelas'].'-'.$data['jurusan'].'.png' ?>" > download QR </a>
+                                                                <a class="btn btn-success" href="../resources/images/QRcode/<?= $data['nama'] ?>-QR.png" download="<?= $data['nama'].'_'.$data['kelas'].'-'.$data['jurusan'].'.png' ?>" > download QR </a>
                                                             </td>
                                                         </tr>
                                         <?php
