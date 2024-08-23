@@ -377,7 +377,7 @@ require "../../private/function/db_init.php";
                             </div>
                             <?php
                         } else {
-                            $querySimpan = mysqli_query($con, "INSERT INTO `siswa`(`nisn`, `nama`, `jenis_kelamin`, `kelas`, `jurusan`, `no_siswa`, `no_orangtua`, `token`) VALUES ('$nisn','$nama','$jenisKelamin','$kelas','$jurusan','$noSiswa','$noOrtu', 'token -')");
+                            $querySimpan = mysqli_query($con, "INSERT INTO `siswa`(`nisn`, `nama`, `jenis_kelamin`, `kelas`, `jurusan`, `no_siswa`, `no_orangtua`, `token`) VALUES ('$nisn','$nama','$jenisKelamin','$kelas','$jurusan','$noSiswa','$noOrtu', '-')");
                             
                             if($querySimpan){
                                 ?>
