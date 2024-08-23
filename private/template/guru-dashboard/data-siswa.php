@@ -442,7 +442,21 @@
                                                                 <a href="./?tab=edit-data-siswa&q=<?= $data['nisn'] ?>" type="button" class="btn btn-primary">Edit</a>
                                                                 <a href="./?tab=delete-siswa&q=<?= $data['nisn'] ?>" onclick="return confirm('Yakin ingin menghapus data?')" type="button" class="btn btn-danger">Delete</a>
                                                                 <!-- <a type="button" class="btn btn-success">Download QR</a> -->
-                                                                <a class="btn btn-success" href="../resources/images/QRcode/<?= $data['nama'] ?>-QR.png" download="<?= $data['nama'].'_'.$data['kelas'].'-'.$data['jurusan'].'.png' ?>" > download QR </a>
+                                                                <?php
+                                                                $pathQR = "../resources/images/QRcode/".$data['nama']."-QR.png";
+                                                                if (file_exists($pathQR)) {
+                                                                    // Tampilkan download button
+                                                                    ?>
+                                                                    <a class="btn btn-success" href="../resources/images/QRcode/<?= $data['nama'] ?>-QR.png" download="<?= $data['nama'].'_'.$data['kelas'].'-'.$data['jurusan'].'.png' ?>" > download QR </a>
+                                                                    <?php
+                                                                } else {
+                                                                    ?>
+                                                                    <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="top" title="mohon generate QR terlebih dahulu">
+                                                                        <a class="btn btn-success disabled" > download QR </a>
+                                                                    </span>
+                                                                    <?php
+                                                                }
+                                                                ?>
                                                             </td>
                                                         </tr>
                                         <?php
@@ -494,10 +508,6 @@
 
         // Your code to run since DOM is loaded and ready
     });
-
-    function myClick() {
-        console.log("hello");
-    }
 </script>
 
 </html>
