@@ -362,7 +362,11 @@
                         
                         $nisn = htmlspecialchars($_POST['nisn']);
                         $nama = htmlspecialchars($_POST['nama']);
-                        $noSiswa = htmlspecialchars($_POST['noHpSiswa']);
+                        if (isset($_POST['noHpSiswa'])) {
+                            $noSiswa = htmlspecialchars($_POST['noHpSiswa']);
+                        } else {
+                            $noSiswa = "-";
+                        }
                         $noOrtu = htmlspecialchars($_POST['noHpOrtu']);
                         $jenisKelamin = htmlspecialchars($_POST['jenisKelamin']);
                         $kelas = htmlspecialchars($_POST['kelas']);
