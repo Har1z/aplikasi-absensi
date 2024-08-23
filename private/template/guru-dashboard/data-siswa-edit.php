@@ -288,7 +288,7 @@
 
                                     <div class="mb-3 mt-3">
                                         <label for="nisnInput" class="form-label">NISN</label>
-                                        <input type="number" class="form-control" id="nisnInput" name="nisn" value="<?= $data['nisn'] ?>" required >
+                                        <input type="text" class="form-control" id="nisnInput" name="nisn" value="<?= $data['nisn'] ?>" minlength="10" required >
                                     </div>
 
                                     <div class="mb-3">
