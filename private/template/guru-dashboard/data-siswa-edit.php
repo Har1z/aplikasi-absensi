@@ -350,7 +350,7 @@
                             </div>
 
                             
-                            <button type="submit" class="btn btn-primary mb-3" name="submitForm">Simpan</button>
+                            <button type="submit" class="btn btn-primary mb-3" name="submit">Simpan</button>
                             <a href="./?tab=data-siswa" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
                         </form>
                     </div>
@@ -358,7 +358,7 @@
                 <!-- box data end -->
 
                 <?php
-                    if(isset($_POST['submitForm'])){
+                    if(isset($_POST['submit'])){
                         
                         $nisn = htmlspecialchars($_POST['nisn']);
                         $nama = htmlspecialchars($_POST['nama']);
