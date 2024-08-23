@@ -292,8 +292,8 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="noHpSiswaInput" class="form-label">No. HP siswa</label>
-                                        <input type="number" class="form-control" id="noHpSiswaInput" name="noHpSiswa" value="<?= $data['no_siswa'] ?>" required >
+                                        <label for="noHpSiswaInput" class="form-label">No. HP siswa (opsional)</label>
+                                        <input type="number" class="form-control" id="noHpSiswaInput" name="noHpSiswa" value="<?= $data['no_siswa'] ?>">
                                     </div>
 
                                     <div class="mb-3">
