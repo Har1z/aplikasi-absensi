@@ -44,20 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                         // send messages
-                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $to="+6281284612453"; // change to $nomor and un-comment code above
+                        $nomor = "+62" . substr($data['no_orangtua'], 1);
                         $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                        $api=$client->sendChatMessage($to,$body);
+                        $api=$client->sendChatMessage($nomor,$body);
                         break;
                     } else {
                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$code' AND tgl='$date'");
                         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                         // send messages
-                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $to="+6281284612453"; // change to $nomor and un-comment code above
+                        $nomor = "+62" . substr($data['no_orangtua'], 1);
                         $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                        $api=$client->sendChatMessage($to,$body);
+                        $api=$client->sendChatMessage($nomor,$body);
                         break;
                     }
                 }
@@ -67,19 +65,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                     // send messages
-                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                     $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                    $api=$client->sendChatMessage($to,$body);
+                    $api=$client->sendChatMessage($nomor,$body);
                 } else {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$code' AND tgl='$date'");
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                     // send messages
-                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                     $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                    $api=$client->sendChatMessage($to,$body);
+                    $api=$client->sendChatMessage($nomor,$body);
                 }
                 break;
 
@@ -100,10 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                     // send messages
-                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                     $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
-                    $api=$client_2->sendChatMessage($to,$body);
+                    $api=$client_2->sendChatMessage($nomor,$body);
                 } else {
                     showErrorView('Terjadi kesalahan');
                 }

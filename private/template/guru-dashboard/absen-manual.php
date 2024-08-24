@@ -368,10 +368,10 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                        $to="+6281284612453"; // change to $nomor and un-comment code above
+                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        // $to="+XX888888"; // change to $nomor and un-comment code above
                                                         $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                        // $api=$client->sendChatMessage($to,$body);
+                                                        $api=$client->sendChatMessage($nomor,$body);
                                                         break;
                                                     } else if (mysqli_num_rows($cekAbsen) == 1) {
                                                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$nisn' AND tgl='$todayDate'");
@@ -382,10 +382,10 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                        $to="+6281284612453"; // change to $nomor and un-comment code above
+                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        // $to="+XX888888"; // change to $nomor and un-comment code above
                                                         $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                        // $api=$client->sendChatMessage($to,$body);
+                                                        $api=$client->sendChatMessage($nomor,$body);
                                                         break;
                                                     }
                                                 }
@@ -399,10 +399,10 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
                                                     $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                    // $api=$client->sendChatMessage($to,$body);
+                                                    $api=$client->sendChatMessage($nomor,$body);
                                                 } else {
                                                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                     ?>
@@ -412,10 +412,10 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
                                                     $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                    // $api=$client->sendChatMessage($to,$body);
+                                                    $api=$client->sendChatMessage($nomor,$body);
                                                 }
                                                 break;
                                             
@@ -448,10 +448,10 @@ $telat = date('Hi') > 705;
                                                     <?php
 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    $to="+6281284612453"; // change to $nomor and un-comment code above
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
                                                     $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
-                                                    // $api=$client_2->sendChatMessage($to,$body);
+                                                    $api=$client_2->sendChatMessage($nomor,$body);
                                                 } else {
                                                     ?>
                                                     <div class="alert alert-warning mt-3" role="alert">
