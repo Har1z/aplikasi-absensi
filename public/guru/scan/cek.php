@@ -32,6 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             case 'masuk':
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
                 $sudahHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
+                $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
 
                 if (mysqli_num_rows($sudahHadir) != 0) {
                     showErrorView('Anda sudah absen hari ini', $data, mysqli_fetch_array($cekAbsen));
@@ -45,8 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         // send messages
                         $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                        $api=$client->sendChatMessage($nomor,$body);
+                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                         break;
                     } else {
                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$code' AND tgl='$date'");
@@ -54,8 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         // send messages
                         $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                        $api=$client->sendChatMessage($nomor,$body);
+                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                         break;
                     }
                 }
@@ -66,16 +65,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                    $api=$client->sendChatMessage($nomor,$body);
+                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                 } else {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$code' AND tgl='$date'");
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                    $api=$client->sendChatMessage($nomor,$body);
+                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                 }
                 break;
 
@@ -83,6 +80,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
                 $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
+                $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
                 if (mysqli_num_rows($belumHadir) != 1) {
                     showErrorView('Anda belum absen hari ini', $data, mysqli_fetch_array($cekAbsen));
@@ -97,8 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
-                    $api=$client_2->sendChatMessage($nomor,$body);
+                    $api=$client_2->sendChatMessage($nomor,$pesanPulang);
                 } else {
                     showErrorView('Terjadi kesalahan');
                 }

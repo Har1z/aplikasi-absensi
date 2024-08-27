@@ -51,6 +51,29 @@ imagecopyresampled($QR, $logo, $QR_width / 2.65, $QR_height / 2.65, 0, 0, $logo_
 imagepng($QR, $tempdir . 'qrwithlogo.png');
 
 //menampilkan file qrcode 
-// echo '<div align="center"><h2>Create QR Code With Logo PHP</h2>';
-// echo '<img src="' . $tempdir . 'qrwithlogo.png' . '" />';
+echo '<div align="center"><h2>Create QR Code With Logo PHP</h2>';
+echo '<img src="' . $tempdir . 'qrwithlogo.png' . '" />';
+
+// Create Image From Existing File
+$jpg_image = imagecreatefrompng($tempdir . 'qrwithlogo.png');
+
+// Allocate A Color For The Text
+$black = imagecolorallocate($jpg_image, 255, 255, 255);
+
+// Set Path to Font File
+$font_path = '../resources/font/Arial.ttf';
+
+// Set Text to Be Printed On Image
+$text = "aufa";
+
+// Print Text On Image
+imagettftext($jpg_image, 20, 0, 45, 280, $black, $font_path, $text);
+
+imagepng($jpg_image, $tempdir . 'qrwithlogotext.png');
+
+//menampilkan file qrcode 
+echo '<div align="center"><h2>Create QR Code With Logo PHP</h2>';
+echo '<img src="' . $tempdir . 'qrwithlogotext.png' . '" />';
+
+
 ?>

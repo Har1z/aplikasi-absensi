@@ -343,11 +343,14 @@ $telat = date('Hi') > 705;
                                     }
 
                                     if (cekData($nisn)) {
+                                        $query = mysqli_query($con, "SELECT * FROM siswa WHERE nisn='$nisn'");
+                                        $data = mysqli_fetch_array($query);
 
                                         switch ($waktu){
                                             case 'masuk':
                                                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                 $sudahHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
+                                                $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
 
                                                 if (mysqli_num_rows($sudahHadir) != 0) {
                                                     ?>
@@ -370,8 +373,7 @@ $telat = date('Hi') > 705;
                                                         // send messages
                                                         $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                         // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                        $api=$client->sendChatMessage($nomor,$body);
+                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     } else if (mysqli_num_rows($cekAbsen) == 1) {
                                                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$nisn' AND tgl='$todayDate'");
@@ -384,8 +386,7 @@ $telat = date('Hi') > 705;
                                                         // send messages
                                                         $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                         // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                        $api=$client->sendChatMessage($nomor,$body);
+                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     }
                                                 }
@@ -401,8 +402,7 @@ $telat = date('Hi') > 705;
                                                     // send messages
                                                     $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                    $api=$client->sendChatMessage($nomor,$body);
+                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 } else {
                                                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                     ?>
@@ -414,8 +414,7 @@ $telat = date('Hi') > 705;
                                                     // send messages
                                                     $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $body="Anak anda ".$data['nama']." sudah sampai disekolah"; 
-                                                    $api=$client->sendChatMessage($nomor,$body);
+                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 }
                                                 break;
                                             
@@ -423,6 +422,7 @@ $telat = date('Hi') > 705;
                                                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                 $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
                                                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
+                                                $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
                                                 if (mysqli_num_rows($belumHadir) != 1) {
                                                     ?>
@@ -450,8 +450,7 @@ $telat = date('Hi') > 705;
                                                     // send messages
                                                     $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $body="Anak anda ".$data['nama']." sudah pulang dari sekolah"; 
-                                                    $api=$client_2->sendChatMessage($nomor,$body);
+                                                    $api=$client_2->sendChatMessage($nomor,$pesanPulang);
                                                 } else {
                                                     ?>
                                                     <div class="alert alert-warning mt-3" role="alert">
