@@ -1,6 +1,6 @@
 <?php
     date_default_timezone_set('Asia/Bangkok');
-    if (date('Hi') < 705) {
+    if (date('Hi') < 905) {
         $waktu = 'Masuk';
     } else {
         $waktu = 'Pulang';
