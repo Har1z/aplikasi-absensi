@@ -420,18 +420,19 @@ $telat = date('Hi') > 705;
                                             
                                             case 'pulang':
                                                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate'");
-                                                $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
-                                                $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
+                                                // $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
+                                                // $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
+                                                $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_pulang IS NOT NULL");
                                                 $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
-                                                if (mysqli_num_rows($belumHadir) != 1) {
-                                                    ?>
-                                                    <div class="alert alert-warning mt-3" role="alert">
-                                                        siswa dengan nisn: <?= $nisn ?> belum melakukan absen hari ini.
-                                                    </div>
-                                                    <?php
-                                                    break;
-                                                }
+                                                // if (mysqli_num_rows($belumHadir) != 1) {
+                                                //     ?>
+                                                     <!-- <div class="alert alert-warning mt-3" role="alert">
+                                                //         siswa dengan nisn: <?= $nisn ?> belum melakukan absen hari ini.
+                                                //     </div> -->
+                                                     <?php
+                                                //     break;
+                                                // }
 
                                                 if (mysqli_num_rows($sudahPulang) != 0) {
                                                     ?>
