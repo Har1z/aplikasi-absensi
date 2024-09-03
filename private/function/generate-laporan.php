@@ -232,9 +232,9 @@ function GenerateXlsx($month, $kelas) {
 
                 $hari = date('D', strtotime($tanggal));
                 if ($hari == "Sun") {
-                    $sheet->setCellValue($column . ($dataStartRow + $counter), "-");
+                    $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), "-");
                 } else if ($hari == "Sat") {
-                    $sheet->setCellValue($column . ($dataStartRow + $counter), "-");
+                    $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), "-");
                 }
             }
         }
