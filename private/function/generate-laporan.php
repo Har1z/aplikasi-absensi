@@ -163,6 +163,13 @@ function GenerateXlsx($month, $kelas) {
     $sheet->mergeCells('AJ5:AM5');
     $sheet->setCellValue('AJ5', 'KETERANGAN');
 
+    $sheet->setCellValue('D23', 'PANDUAN SIMBOL:');
+    $sheet->setCellValue('D24', 'H = Hadir');
+    $sheet->setCellValue('D25', 'S = Sakit');
+    $sheet->setCellValue('D26', 'I = Izin');
+    $sheet->setCellValue('D27', 'A = Alfa (tanpa keterangan)');
+    $sheet->setCellValue('D28', '- = Hari libur (sabtu, minggu)');
+
     // Mengisi tanggal (1-??)
     for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $bulanTahun['nomorBulan'], $bulanTahun['tahun']); $i++) {
         if ($i <= 21) {
