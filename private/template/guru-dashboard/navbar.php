@@ -43,10 +43,10 @@
                         <span class="nav_name">Buat / download QR</span>
                     </a>
 
-                    <a href="?tab=laporan" class="nav_link <?= $laporan ?>"> 
+                    <!-- <a href="?tab=laporan" class="nav_link <?= $laporan ?>"> 
                         <i class='bx bx-folder nav_icon'></i> 
                         <span class="nav_name">Laporan absensi</span> 
-                    </a>
+                    </a> -->
 
                     <!-- <a href="#" class="nav_link"> 
                         <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
