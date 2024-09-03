@@ -194,7 +194,6 @@ function GenerateXlsx($month, $kelas) {
         for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $bulanTahun['nomorBulan'], $bulanTahun['tahun']); $i++) {
             if ($i <= 21) {
                 $column = chr(69 + $i); // Kolom mulai dari E (ASCII 69)
-                echo $column. ($dataStartRow + $counter)." ";
                 if ($i < 9) {
                     $tanggal = $month . "-" . "0" . ($i + 1);
                 } else {
@@ -219,9 +218,9 @@ function GenerateXlsx($month, $kelas) {
                 $kehadiran = mysqli_fetch_array($queryKehadiran);
 
                 if ($kehadiran) {
-                    $sheet->setCellValue($column . ($dataStartRow + $counter), kehadiran($kehadiran['kehadiran']));
+                    $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), kehadiran($kehadiran['kehadiran']));
                 } else {
-                    $sheet->setCellValue($column . ($dataStartRow + $counter), " ");
+                    $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), " ");
                 }
             }
         }
@@ -282,14 +281,14 @@ function GenerateXlsx($month, $kelas) {
     $sheet->getStyle('B5:D12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
     $sheet->getStyle('B5:D12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    // // Mengatur header HTTP untuk download
-    // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    // header('Content-Disposition: attachment;filename="absensi_kelas_' . $kelas . '_' . $bulanTahun['bulan'] . '_' . $bulanTahun['tahun'] . '.xlsx"');
-    // header('Cache-Control: max-age=0');
+    // Mengatur header HTTP untuk download
+    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    header('Content-Disposition: attachment;filename="absensi_kelas_' . $kelas . '_' . $bulanTahun['bulan'] . '_' . $bulanTahun['tahun'] . '.xlsx"');
+    header('Cache-Control: max-age=0');
 
-    // // Menyimpan file Excel ke output
-    // $writer = new Xlsx($spreadsheet);
-    // $writer->save('php://output');
+    // Menyimpan file Excel ke output
+    $writer = new Xlsx($spreadsheet);
+    $writer->save('php://output');
 }
 function GenerateAllXlsx($month) /* PLEASE DONT USE THIS FOR A MOMENT */ {
     // Membuat Spreadsheet baru
