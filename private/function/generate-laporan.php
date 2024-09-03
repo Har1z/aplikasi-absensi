@@ -163,12 +163,12 @@ function GenerateXlsx($month, $kelas) {
     $sheet->mergeCells('AJ5:AM5');
     $sheet->setCellValue('AJ5', 'KETERANGAN');
 
-    $sheet->setCellValue('D23', 'PANDUAN SIMBOL:');
-    $sheet->setCellValue('D24', 'H = Hadir');
-    $sheet->setCellValue('D25', 'S = Sakit');
-    $sheet->setCellValue('D26', 'I = Izin');
-    $sheet->setCellValue('D27', 'A = Alfa (tanpa keterangan)');
-    $sheet->setCellValue('D28', '- = Hari libur (sabtu, minggu)');
+    $sheet->setCellValue('D22', 'PANDUAN SIMBOL:');
+    $sheet->setCellValue('D23', 'H = Hadir');
+    $sheet->setCellValue('D24', 'S = Sakit');
+    $sheet->setCellValue('D25', 'I = Izin');
+    $sheet->setCellValue('D26', 'A = Alfa (tanpa keterangan)');
+    $sheet->setCellValue('D27', '- = Hari libur (sabtu, minggu)');
 
     // Mengisi tanggal (1-??)
     for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $bulanTahun['nomorBulan'], $bulanTahun['tahun']); $i++) {
@@ -301,6 +301,8 @@ function GenerateXlsx($month, $kelas) {
 
     $sheet->getStyle('B5:D12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
     $sheet->getStyle('B5:D12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
+
+    $sheet->getStyle('D22:D27')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
 
     // Mengatur header HTTP untuk download
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
