@@ -281,14 +281,14 @@ function GenerateXlsx($month, $kelas) {
     $sheet->getStyle('B5:D12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
     $sheet->getStyle('B5:D12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    // Mengatur header HTTP untuk download
-    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    header('Content-Disposition: attachment;filename="absensi_kelas_' . $kelas . '_' . $bulanTahun['bulan'] . '_' . $bulanTahun['tahun'] . '.xlsx"');
-    header('Cache-Control: max-age=0');
+    // // Mengatur header HTTP untuk download
+    // header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    // header('Content-Disposition: attachment;filename="absensi_kelas_' . $kelas . '_' . $bulanTahun['bulan'] . '_' . $bulanTahun['tahun'] . '.xlsx"');
+    // header('Cache-Control: max-age=0');
 
-    // Menyimpan file Excel ke output
-    $writer = new Xlsx($spreadsheet);
-    $writer->save('php://output');
+    // // Menyimpan file Excel ke output
+    // $writer = new Xlsx($spreadsheet);
+    // $writer->save('php://output');
 }
 function GenerateAllXlsx($month) /* PLEASE DONT USE THIS FOR A MOMENT */ {
     // Membuat Spreadsheet baru
