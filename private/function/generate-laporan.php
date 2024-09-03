@@ -208,6 +208,11 @@ function GenerateXlsx($month, $kelas) {
                     $sheet->setCellValue($column . ($dataStartRow + $counter), " ");
                 }
 
+                $hari = date('D', strtotime($tanggal));
+                if ($hari == "Sun" || "Sat") {
+                    $sheet->setCellValue($column . ($dataStartRow + $counter), "-");
+                }
+
             } else {
                 $column = chr(65); // Kolom mulai dari A (ASCII 65)
                 $column2 = chr(43 + $i); // Kolom mulai dari A (ASCII 65)
@@ -221,6 +226,11 @@ function GenerateXlsx($month, $kelas) {
                     $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), kehadiran($kehadiran['kehadiran']));
                 } else {
                     $sheet->setCellValue($column . $column2 . ($dataStartRow + $counter), " ");
+                }
+
+                $hari = date('D', strtotime($tanggal));
+                if ($hari == "Sun" || "Sat") {
+                    $sheet->setCellValue($column . ($dataStartRow + $counter), "-");
                 }
             }
         }
