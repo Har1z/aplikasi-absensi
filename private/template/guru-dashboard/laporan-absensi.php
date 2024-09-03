@@ -281,29 +281,20 @@
                         <!-- table -->
                         <div class="row">
 
-                            <div class="col-12 col-lg-6 mb-2 mt-4">
+                            <div class="col-12 col-lg-4 mb-2 mt-4">
                                 <div class="p-4 border border-light shadow-sm rounded">
-                                    <h4>THIS PAGE IS UNDER MAINTENANCE</h4>
-                                    <!-- <h4 class="text-primary mb-2"><b>Data Siswa</b></h4>
-                                    <a href="./?tab=data-siswa">Lihat data</a><br>
-                                    <button class="btn btn-primary mt-3" type="button" id="generateButton" onclick="generate()" > Generate All </button>
-                                    <button class="btn btn-primary mt-3" type="button" id="loadingButton" disabled hidden>
-                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-                                        Loading...
-                                    </button>
-                                    <?php
-                                        $filename = "../resources/images/QRcode/QR-zip/QR_code.zip";
+                                    <h5>Silahkan pilih kelas & bulan</h5>
+                                    <form action="./?tab=generate-laporan" method="post">
+                                        <select class="form-select mb-2 mt-3" name="kelas" id="" required>
+                                            <option value=""> Pilih Kelas </option>
+                                            <option value="10"> 10 </option>
+                                            <option value="11"> 11 </option>
+                                            <option value="12"> 12 </option>
+                                        </select>
 
-                                        if (file_exists($filename)) {
-                                            ?>
-                                                <a class="btn btn-success mt-3" href="../resources/images/QRcode/QR-zip/QR_code.zip" download="QR_code_all.zip" > Download All </a>  
-                                            <?php
-                                        }else {
-                                            ?>
-                                                <a class="btn btn-success disabled mt-3" href="../resources/images/QRcode/QR-zip/QR_code_all.zip" download="QR_code_all.zip" > Download All </a>  
-                                            <?php
-                                        }
-                                        ?> -->
+                                        <input class="form-control mb-4 mt-2" type="month" name="month" required>
+                                        <button class="btn btn-primary" type="submit" > Download Laporan </button>
+                                    </form>
                                 </div>
                             </div>
 

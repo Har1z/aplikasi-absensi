@@ -89,6 +89,11 @@
             $laporan = "active";
             require "../../private/template/guru-dashboard/laporan-absensi.php";
             break;
+
+        case "generate-laporan":
+            $laporan = "active";
+            require "../../private/function/generate-laporan.php";
+            break;
         
         case "scan-barcode":
             require "../../private/template/guru-dashboard/scan-auto.php";
