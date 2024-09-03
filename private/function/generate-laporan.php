@@ -194,6 +194,7 @@ function GenerateXlsx($month, $kelas) {
         for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $bulanTahun['nomorBulan'], $bulanTahun['tahun']); $i++) {
             if ($i <= 21) {
                 $column = chr(69 + $i); // Kolom mulai dari E (ASCII 69)
+                echo $column;
                 if ($i < 9) {
                     $tanggal = $month . "-" . "0" . ($i + 1);
                 } else {
