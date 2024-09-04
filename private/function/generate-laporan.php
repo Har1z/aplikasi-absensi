@@ -302,7 +302,7 @@ function GenerateXlsx($month, $kelas) {
     $sheet->getStyle('B5:D12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
     $sheet->getStyle('B5:D12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $sheet->getStyle('D22:D27')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
+    $sheet->getStyle('D22:D27')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
     // Mengatur header HTTP untuk download
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
