@@ -103,6 +103,11 @@
             $absensiSiswa = "active";
             require "../../private/template/guru-dashboard/absen-manual.php";
             break;
+        
+        case "kelola-pesan":
+            $dashboard = "active";
+            require "../../private/template/guru-dashboard/kelola-pesan.php";
+            break;
 
         default:
             $dashboard = "active";

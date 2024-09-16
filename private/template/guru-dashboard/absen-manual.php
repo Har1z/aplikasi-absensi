@@ -6,9 +6,9 @@ require "../../private/function/db_init.php";
 require_once('../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
 require_once('../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
     
-$token="rw70t1qrzrhqs9fc"; // Ultramsg.com token
-$instance_id="instance92651"; // Ultramsg.com instance id
-$client = new UltraMsg\WhatsAppApi($token,$instance_id);
+// $token="rw70t1qrzrhqs9fc"; // Ultramsg.com token
+// $instance_id="instance92651"; // Ultramsg.com instance id
+// $client = new UltraMsg\WhatsAppApi($token,$instance_id);
 
 $token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
 $instance_id_2="instance92836"; // Ultramsg.com instance id
@@ -288,7 +288,7 @@ $telat = date('Hi') > 705;
                 <div class="shadow-sm rounded bg-white overflow-scroll hide-scrollbar">
                     <div class="container-fluid mt-3">
                         <h4 class="fw-bold mb-3">Absen manual</h4>
-                        <p class="fw-light"></p>
+                        <p class="fw-light">*untuk sementara waktu fitur notifikasi whatsapp pada absen manual tidak berfungsi</p>
                         
                         <div class="row mb-2">
 
@@ -371,9 +371,9 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                        // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        // // $to="+XX888888"; // change to $nomor and un-comment code above
+                                                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     } else if (mysqli_num_rows($cekAbsen) == 1) {
                                                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$nisn' AND tgl='$todayDate'");
@@ -384,9 +384,9 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                        // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        // // $to="+XX888888"; // change to $nomor and un-comment code above
+                                                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     }
                                                 }
@@ -400,9 +400,9 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // // $to="+XX888888"; // change to $nomor and un-comment code above
+                                                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 } else {
                                                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                     ?>
@@ -412,9 +412,9 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // // $to="+XX888888"; // change to $nomor and un-comment code above
+                                                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 }
                                                 break;
                                             
@@ -449,9 +449,9 @@ $telat = date('Hi') > 705;
                                                     <?php
 
                                                     // send messages
-                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
-                                                    // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    $api=$client_2->sendChatMessage($nomor,$pesanPulang);
+                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    // // $to="+XX888888"; // change to $nomor and un-comment code above
+                                                    // $api=$client_2->sendChatMessage($nomor,$pesanPulang);
                                                 } else {
                                                     ?>
                                                     <div class="alert alert-warning mt-3" role="alert">
