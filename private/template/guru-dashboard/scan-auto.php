@@ -185,30 +185,10 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
                     // Giving the scanner a delay between result
                     qrCodeScanner.pause();
-
                     // Removing unwanted "paused scanner" banner on the camera when on delay
-                    let element = document.querySelector("#previewKamera > div");
-
-                    // Get the current style attribute value
-                    let styleValue = element.getAttribute("style");
-
-                    // Change 'style' to 'style_alt'
-                    if (styleValue) {
-                        element.setAttribute("style_alt", styleValue);
-                        element.removeAttribute("style");
-                    }
                     document.querySelector("#previewKamera > div").removeAttribute("style");
                     document.querySelector("#previewKamera > div").innerHTML = `${qrCodeMessage}`;
                     setTimeout(() => {
-
-                        let styleAltValue = element.getAttribute("style_alt");
-
-                        // Restore the 'style' from 'style_alt'
-                        if (styleAltValue) {
-                            element.setAttribute("style", styleAltValue);
-                            element.removeAttribute("style_alt");
-                        }
-
                         qrCodeScanner.resume();
                     }, 2000);
                 },
