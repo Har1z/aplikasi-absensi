@@ -8,9 +8,9 @@ $token="ylmjx9vj6zqbczb4"; // Ultramsg.com token
 $instance_id="instance95029"; // Ultramsg.com instance id
 $client = new UltraMsg\WhatsAppApi($token,$instance_id);
 
-$token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
-$instance_id_2="instance92836"; // Ultramsg.com instance id
-$client_2 = new UltraMsgs\WhatsAppApi($token_2,$instance_id_2);
+// $token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
+// $instance_id_2="instance92836"; // Ultramsg.com instance id
+// $client_2 = new UltraMsgs\WhatsAppApi($token_2,$instance_id_2);
 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $api=$client_2->sendChatMessage($nomor,$pesanPulang);
+                    $api=$client->sendChatMessage($nomor,$pesanPulang);
                 } else {
                     showErrorView('Terjadi kesalahan');
                 }
