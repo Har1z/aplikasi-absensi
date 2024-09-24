@@ -172,7 +172,7 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                 cameraId,
                 {
                     fps: 20,    // Optional, frame per seconds for qr code scanning
-                    // qrbox: 250  // Optional, if you want bounded box UI
+                    qrbox: 250  // Optional, if you want bounded box UI
                 },
                 qrCodeMessage => {
                     console.log(`QR Code detected: ${qrCodeMessage}`);
@@ -206,6 +206,7 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                 { facingMode: "environment" },
                 {
                     fps: 20,
+                    qrbox: 250
                 },
                 qrCodeMessage => {
                     console.log(`QR Code detected: ${qrCodeMessage}`);
