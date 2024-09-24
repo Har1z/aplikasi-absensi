@@ -165,14 +165,19 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
             }, 300);
         });
 
+        function isMobileDevice() {
+            return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+        }
+
         function startScanning(cameraId) {
             const qrCodeScanner = new Html5Qrcode("previewKamera");
+            const qrboxSize = isMobileDevice() ? 170 : 250;  // Lebih kecil untuk mobile
 
             qrCodeScanner.start(
                 cameraId,
                 {
                     fps: 20,    // Optional, frame per seconds for qr code scanning
-                    qrbox: 250  // Optional, if you want bounded box UI
+                    qrbox: qrboxSize  // Optional, if you want bounded box UI
                 },
                 qrCodeMessage => {
                     console.log(`QR Code detected: ${qrCodeMessage}`);
@@ -201,12 +206,13 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
 
         function autoStart() {
             const html5QrCode = new Html5Qrcode("previewKamera");
+            const qrboxSize = isMobileDevice() ? 170 : 250;  // Lebih kecil untuk mobile
 
             html5QrCode.start(
                 { facingMode: "environment" },
                 {
                     fps: 20,
-                    qrbox: 250
+                    qrbox: qrboxSize
                 },
                 qrCodeMessage => {
                     console.log(`QR Code detected: ${qrCodeMessage}`);
