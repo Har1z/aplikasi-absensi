@@ -163,13 +163,6 @@ function GenerateXlsx($month, $kelas) {
     $sheet->mergeCells('AJ5:AM5');
     $sheet->setCellValue('AJ5', 'KETERANGAN');
 
-    $sheet->setCellValue('D22', 'PANDUAN SIMBOL:');
-    $sheet->setCellValue('D23', 'H = Hadir');
-    $sheet->setCellValue('D24', 'S = Sakit');
-    $sheet->setCellValue('D25', 'I = Izin');
-    $sheet->setCellValue('D26', 'A = Alfa (tanpa keterangan)');
-    $sheet->setCellValue('D27', '- = Hari libur (sabtu, minggu)');
-
     // Mengisi tanggal (1-??)
     for ($i = 0; $i < cal_days_in_month(CAL_GREGORIAN, $bulanTahun['nomorBulan'], $bulanTahun['tahun']); $i++) {
         if ($i <= 21) {
@@ -262,6 +255,17 @@ function GenerateXlsx($month, $kelas) {
     $sheet->setCellValue('AL6', 'I');
     $sheet->setCellValue('AM6', 'A');
 
+    //panduan
+    
+    $sheet->setCellValue('D'.(2 + $counter), 'PANDUAN SIMBOL:');
+    $sheet->setCellValue('D'.(3 + $counter), 'H = Hadir');
+    $sheet->setCellValue('D'.(4 + $counter), 'S = Sakit');
+    $sheet->setCellValue('D'.(5 + $counter), 'I = Izin');
+    $sheet->setCellValue('D'.(6 + $counter), 'A = Alfa (tanpa keterangan)');
+    $sheet->setCellValue('D'.(7 + $counter), '- = Hari libur (sabtu, minggu)');
+
+    $sheet->getStyle('D'.(2 + $counter).':D'.(7 + $counter))->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+
     // Mengatur border untuk seluruh tabel
     $styleArray = [
         'borders' => [
@@ -302,7 +306,7 @@ function GenerateXlsx($month, $kelas) {
     $sheet->getStyle('B5:D12')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_CENTER);
     $sheet->getStyle('B5:D12')->getAlignment()->setVertical(Alignment::VERTICAL_CENTER);
 
-    $sheet->getStyle('D22:D27')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
+    // $sheet->getStyle('D22:D27')->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
     // Mengatur header HTTP untuk download
     header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
