@@ -3,18 +3,7 @@
 date_default_timezone_set('Asia/Bangkok');
 require "../../private/function/db_init.php";
 
-require_once('../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
-require_once('../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
-    
-$token="rw70t1qrzrhqs9fc"; // Ultramsg.com token
-$instance_id="instance92651"; // Ultramsg.com instance id
-$client = new UltraMsg\WhatsAppApi($token,$instance_id);
-
-$token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
-$instance_id_2="instance92836"; // Ultramsg.com instance id
-$client_2 = new UltraMsgs\WhatsAppApi($token_2,$instance_id_2);
-
-$todayDate = date('Y').'-'.date('m').'-'.date('d');
+$todayDate = date('Y') . '-' . date('m') . '-' . date('d');
 $telat = date('Hi') > 705;
 
 ?>
@@ -274,6 +263,38 @@ $telat = date('Hi') > 705;
             }
         }
     </style>
+    <style>
+        .chat-bubble {
+        background-color: #333;
+        color: white;
+        border-radius: 15px;
+        padding: 10px 15px;
+        display: inline-block;
+        position: relative;
+        max-width: 70%;
+        }
+        
+        .chat-bubble::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 10px;
+        border-width: 10px;
+        border-style: solid;
+        border-color: #333 transparent transparent transparent;
+        }
+        
+        .chat-time {
+        display: block;
+        font-size: 0.8em;
+        color: #b0b0b0;
+        text-align: right;
+        }
+        
+        .chat-container {
+        margin: 20px;
+        }
+    </style>
 </head>
 
 <body id="body-pd" class="bg-light">
@@ -284,29 +305,43 @@ $telat = date('Hi') > 705;
         <div class="row">
             <div id="refresh" hidden></div>
 
-            <div class="col-12 col-lg-4 mb-4 mt-2">
+            <div class="col-12 col-lg-6 mb-4 mt-2">
                 <div class="shadow-sm rounded bg-white overflow-scroll hide-scrollbar">
                     <div class="container-fluid mt-3">
                         <h4 class="fw-bold mb-3">Kelola Pesan</h4>
                         <p class="fw-light"></p>
-                        
+
                         <div class="row mb-2">
 
                             <div class="col-12">
-                            <form id="notificationForm" action="" method="post">
+                                <form id="notificationForm" action="" method="post">
 
-                                <label for="inputNisn" class="form-label mt-3"><b>Pesan Absen Masuk</b></label>
-                                <textarea name="pesanPulang" class="form-control mb-4" id="" form="notificationForm"></textarea>
+                                    <label for="inputNisn" class="form-label mt-3"><b>Pesan Absen Masuk</b></label>
+                                    <textarea name="pesanPulang" class="form-control mb-2" id="" form="notificationForm"></textarea>
+                                    <label for="inputNisn" class="form-label"><b>Tampilan absen Masuk</b></label>
+                                    <div class="preview-chat mb-4">
+                                        <div class="chat-bubble">
+                                        Assalamualaikum Wr.Wb, ayah/bunda Ananda {nama siswa} sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda {nama siswa}. Aamin, wassalamualaikum.
+                                            <span class="chat-time">07.59</span>
+                                        </div>
+                                    </div>
 
-                                <label for="absenInput" class="form-label"><b>Pesan Absen Pulang</b></label>
-                                <textarea name="pesanPulang" class="form-control mb-3" id="" form="notificationForm"></textarea>
+                                    <label for="absenInput" class="form-label"><b>Pesan Absen Pulang</b></label>
+                                    <textarea name="pesanPulang" class="form-control mb-2" id="" form="notificationForm"></textarea>
+                                    <label for="inputNisn" class="form-label"><b>Tampilan absen Pulang</b></label>
+                                    <div class="preview-chat mb-3">
+                                        <div class="chat-bubble">
+                                            Bisaaa bangettt
+                                            <span class="chat-time">07.59</span>
+                                        </div>
+                                    </div>
 
-                                <button type="submit" class="btn btn-primary mb-3" name="submitForm">Simpan</button>
-                                <a href="./" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
-                            </form>
+                                    <button type="submit" class="btn btn-primary mb-3" name="submitForm">Simpan</button>
+                                    <a href="./" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
+                                </form>
 
                             </div>
-                            
+
                         </div>
 
                     </div>
@@ -314,62 +349,62 @@ $telat = date('Hi') > 705;
             </div>
 
         </div>
-        
+
     </div>
 
-<?php
+    <?php
 
-function cekData($nisn)
-{
-    global $con;
-    $queryCekSiswa = mysqli_query($con, "SELECT * FROM siswa WHERE nisn='$nisn'");
-    $result = mysqli_num_rows($queryCekSiswa);
+    function cekData($nisn)
+    {
+        global $con;
+        $queryCekSiswa = mysqli_query($con, "SELECT * FROM siswa WHERE nisn='$nisn'");
+        $result = mysqli_num_rows($queryCekSiswa);
 
-    if ($result > 0) {
-        return true; // jika data ditemukan
-    } else {
-        return false;
-    }
-}
-
-function kehadiran($kehadiran): array
-{
-    $text = '';
-    $color = '';
-    switch ($kehadiran) {
-        case 1:
-            $color = 'success';
-            $text = 'Hadir';
-            break;
-        case 2:
-            $color = 'warning';
-            $text = 'Sakit';
-            break;
-        case 3:
-            $color = 'info';
-            $text = 'Izin';
-            break;
-        case 4:
-            $color = 'danger';
-            $text = 'Tanpa keterangan';
-            break;
-        case 0:
-        default:
-            $color = 'disabled';
-            $text = 'Belum tersedia';
-            break;
+        if ($result > 0) {
+            return true; // jika data ditemukan
+        } else {
+            return false;
+        }
     }
 
-    return ['color' => $color, 'text' => $text];
-}
-?>
+    function kehadiran($kehadiran): array
+    {
+        $text = '';
+        $color = '';
+        switch ($kehadiran) {
+            case 1:
+                $color = 'success';
+                $text = 'Hadir';
+                break;
+            case 2:
+                $color = 'warning';
+                $text = 'Sakit';
+                break;
+            case 3:
+                $color = 'info';
+                $text = 'Izin';
+                break;
+            case 4:
+                $color = 'danger';
+                $text = 'Tanpa keterangan';
+                break;
+            case 0:
+            default:
+                $color = 'disabled';
+                $text = 'Belum tersedia';
+                break;
+        }
+
+        return ['color' => $color, 'text' => $text];
+    }
+    ?>
 
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function (event) {
+    document.addEventListener("DOMContentLoaded", function(event) {
 
         const showNavbar = (toggleId, navId, bodyId, headerId) => {
             const toggle = document.getElementById(toggleId),
