@@ -42,9 +42,9 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
         <a href="./" type="button" class="btn btn-secondary"
             style="user-select: none; position: absolute; top: 50%; right: 4%; transform: translateY(-50%);"><span
                 class=""><i class='bx bx-grid-alt nav_icon'></i> Dashboard </span></a>
-        <a href="./?tab=absen-manual" type="button" class="btn btn-primary"
+        <!-- <a href="./?tab=absen-manual" type="button" class="btn btn-primary"
             style="user-select: none; position: absolute; top: 50%; right: 4%; transform: translate(-120%, -50%);"><span
-                class=""> Absen Manual </span></a>
+                class=""> Absen Manual </span></a> -->
     </div>
     <div class="main-panel">
         <div class="content">

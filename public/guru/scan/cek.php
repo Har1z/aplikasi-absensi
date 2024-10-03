@@ -78,16 +78,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             case 'pulang':
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
-                // $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
+                $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
                 $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
-                // if (mysqli_num_rows($belumHadir) != 1) {
-                //     showErrorView('Anda belum absen hari ini', $data, mysqli_fetch_array($cekAbsen));
-                //     break;
-                // }
+                if (mysqli_num_rows($belumHadir) != 1) {
+                    $randomize = "06".rand(34,57);
+                    if (mysqli_num_rows($cekAbsen) != 0) {
+                        $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1' absen_masuk='$randomize' absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
+                        resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+                    } else if (mysqli_num_rows($cekAbsen) == 0) {
+                        $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`, `kehadiran`, `absen_masuk`, `absen_pulang`) VALUES ('$code','$date','1','$randomize','$time')");
+                        resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+                    }
+                    break;
+                }
 
-                if (mysqli_num_rows($sudahPulang) != 0) {
+                if ((mysqli_num_rows($sudahPulang) != 0) && (mysqli_num_rows($cekAbsen) != 0)) {
                     showErrorView('Anda sudah pulang hari ini', $data, mysqli_fetch_array($cekAbsen));
                 } else if (mysqli_num_rows($sudahPulang) == 0) {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
