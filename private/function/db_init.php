@@ -1,6 +1,6 @@
 <?php
-    // $con = mysqli_connect("localhost","u736687820_yaylabtech","Absensilab@11_","u736687820_lab_attendance", "3306");
-    $con = mysqli_connect("localhost","root","","attendance_management");
+    $con = mysqli_connect("localhost","u736687820_yaylabtech","Absensilab@11_","u736687820_lab_attendance", "3306");
+    // $con = mysqli_connect("localhost","root","","attendance_management");
 
     // Check connection
     if (mysqli_connect_errno()) {
