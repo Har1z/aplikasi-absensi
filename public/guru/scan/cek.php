@@ -4,8 +4,8 @@ require "../../../private/function/db_init.php";
 require_once('../../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
 require_once('../../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
     
-$token="ylmjx9vj6zqbczb4"; // Ultramsg.com token
-$instance_id="instance95029"; // Ultramsg.com instance id
+$token="x0gcrs0q2pxwmtga"; // Ultramsg.com token
+$instance_id="instance96969"; // Ultramsg.com instance id
 $client = new UltraMsg\WhatsAppApi($token,$instance_id);
 
 // $token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token

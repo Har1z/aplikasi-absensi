@@ -7,8 +7,8 @@
 	*/
 	
     class WhatsAppApi {
-        protected $token = 'ylmjx9vj6zqbczb4';
-        protected $instance_id = 'instance95029';  
+        protected $token = 'x0gcrs0q2pxwmtga';
+        protected $instance_id = 'instance96969';  
 		
         /**
 			* Ultramsg constructor.

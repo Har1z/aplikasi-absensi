@@ -1,3 +1,4 @@
 /resources/images/QRcode/*
 /node_modules
+/private/function/db_init.php
 /private/dump
