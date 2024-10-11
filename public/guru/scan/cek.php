@@ -83,17 +83,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
                 // PrOBLEMATIC
-                // if (mysqli_num_rows($belumHadir) != 1) {
-                //     $randomize = "6".rand(34,57);
-                //     if (mysqli_num_rows($cekAbsen) != 0) {
-                //         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1' absen_masuk='$randomize' absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
-                //         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
-                //     } else if (mysqli_num_rows($cekAbsen) == 0) {
-                //         $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`, `kehadiran`, `absen_masuk`, `absen_pulang`) VALUES ('$code','$date','1','$randomize','$time')");
-                //         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
-                //     }
-                //     break;
-                // }
+                // bukan problematic cuma programmer aja lupa kasih koma di query duhhhh
+                if (mysqli_num_rows($belumHadir) != 1) {
+                    $randomize = "6".rand(34,57).rand(11, 59);
+                    if (mysqli_num_rows($cekAbsen) != 0) {
+                        $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$randomize', absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
+                        resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+                    } else if (mysqli_num_rows($cekAbsen) == 0) {
+                        $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`, `kehadiran`, `absen_masuk`, `absen_pulang`) VALUES ('$code','$date','1','$randomize','$time')");
+                        resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+                    }
+                    break;
+                }
 
                 if ((mysqli_num_rows($sudahPulang) != 0) && (mysqli_num_rows($cekAbsen) != 0)) {
                     showErrorView('Anda sudah pulang hari ini', $data, mysqli_fetch_array($cekAbsen));
