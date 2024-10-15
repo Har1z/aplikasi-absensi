@@ -286,7 +286,7 @@
 
             <div class="col-12 col-md-6 col-lg-3 mb-4">
                 <div>
-                    <a type="button" href="?tab=tambah-data-guru" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambah data guru</a>
+                    <a type="button" href="?tab=tambah-data-guru" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambah data guru</a>
                 </div>
             </div>
 
@@ -330,8 +330,8 @@
                                         ?>
                                                     <tr>
                                                             <th scope="row"> <?=$nomor?> </th>
-                                                            <td><?= $data['email']?></td>
                                                             <td><?= $data['nama']?></td>
+                                                            <td><?= $data['email']?></td>
                                                             <td><?= $data['jenis_kelamin']?></td>
                                                             <td><?= $data['no_guru']?></td>
                                                             <td class="user-select-none text-center">
