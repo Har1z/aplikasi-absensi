@@ -311,10 +311,10 @@
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="jenisKelaminInput" class="form-label">Jenis Kelamin</label>
-                                        <select class="form-select" aria-label="Default select example" id="jenisKelaminInput" name="jenisKelamin" >
-                                            <option value="laki-laki" <?php if ($data['jenis_kelamin'] == "laki-laki") {echo "selected";}?> >Laki-laki</option>
-                                            <option value="perempuan" <?php if ($data['jenis_kelamin'] == "perempuan") {echo "selected";}?> >Perempuan</option>
+                                        <label for="jenisAkunInput" class="form-label">Jenis Akun</label>
+                                        <select class="form-select" aria-label="Default select example" id="jenisAkunInput" name="jenisAkun" >
+                                            <option value="admin" <?php if ($data['jenis_akun'] == "admin") {echo "selected";}?> >Admin</option>
+                                            <option value="petugas" <?php if ($data['jenis_akun'] == "petugas") {echo "selected";}?> >Petugas</option>
                                         </select>
                                     </div>
 
@@ -336,7 +336,7 @@
                         $email = htmlspecialchars($_POST['email']);
                         $nama = htmlspecialchars($_POST['nama']);
                         $noHp = htmlspecialchars($_POST['noHp']);
-                        $jenisKelamin = htmlspecialchars($_POST['jenisKelamin']);
+                        $jenisAkun = htmlspecialchars($_POST['jenisAkun']);
 
                         if (isset($_POST['password'])) {
                             $password = htmlspecialchars($_POST['password']);
@@ -361,9 +361,9 @@
                             //updating the data
                             if ($password != "") {
                                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                                $querySimpan = mysqli_query($con, "UPDATE guru SET `email`='$email',`nama`='$nama',`jenis_kelamin`='$jenisKelamin', `no_guru`='$noHp', `password`='$hashedPassword' WHERE id_g='$get_id'");
+                                $querySimpan = mysqli_query($con, "UPDATE guru SET `email`='$email',`nama`='$nama',`jenis_akun`='$jenisAkun', `no_guru`='$noHp', `password`='$hashedPassword' WHERE id_g='$get_id'");
                             } else {
-                                $querySimpan = mysqli_query($con, "UPDATE guru SET `email`='$email',`nama`='$nama',`jenis_kelamin`='$jenisKelamin', `no_guru`='$noHp' WHERE id_g='$get_id'");
+                                $querySimpan = mysqli_query($con, "UPDATE guru SET `email`='$email',`nama`='$nama',`jenis_akun`='$jenisAkun', `no_guru`='$noHp' WHERE id_g='$get_id'");
                             }
                             
 

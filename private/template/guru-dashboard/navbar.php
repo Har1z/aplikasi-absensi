@@ -26,27 +26,51 @@
                         <span class="nav_name">Absensi siswa</span> 
                     </a> 
 
+                    <?php
+                        if ($_SESSION['jenis_akun'] == 'admin') {
+                            ?>
                     <a href="?tab=data-siswa" class="nav_link <?= $dataSiswa ?>"> 
                         <i class='bx bx-user nav_icon'></i> 
                         <!-- <i class='bx bx-message-square-detail nav_icon'></i>  -->
                         <span class="nav_name">Data siswa</span> 
                     </a> 
+                            <?php
+                        } 
+                    ?>
 
+                    <?php
+                        if ($_SESSION['jenis_akun'] == 'admin') {
+                            ?>
                     <a href="?tab=data-guru" class="nav_link <?= $dataGuru ?>"> 
                         <i class='bx bxs-user-rectangle nav_icon'></i>
                         <!-- <i class='bx bx-bookmark nav_icon'></i>  -->
                         <span class="nav_name">Data guru</span> 
                     </a> 
+                            <?php
+                        } 
+                    ?>
 
+                    <?php
+                        if ($_SESSION['jenis_akun'] == 'admin') {
+                            ?>
                     <a href="?tab=generate-qr" class="nav_link <?= $generateQr ?>">
                         <i class='bx bx-qr nav_icon'></i>
                         <span class="nav_name">Buat / download QR</span>
                     </a>
+                            <?php
+                        } 
+                    ?>
 
+                    <?php
+                        if ($_SESSION['jenis_akun'] == 'admin') {
+                            ?>
                     <a href="?tab=laporan" class="nav_link <?= $laporan ?>"> 
                         <i class='bx bx-folder nav_icon'></i> 
                         <span class="nav_name">Laporan absensi</span> 
                     </a>
+                            <?php
+                        } 
+                    ?>
 
                     <!-- <a href="#" class="nav_link"> 
                         <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 

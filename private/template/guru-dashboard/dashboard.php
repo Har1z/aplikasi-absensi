@@ -294,6 +294,9 @@ $jumlahKehadiran = mysqli_num_rows($queryKehadiran)
     <!--Container Main start-->
     <div class="container-fluid text-center">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <?php
+                if ($_SESSION['jenis_akun'] == "admin") {
+                    ?>
             <div class="col">
                 <div class="card" style="user-select: none;">
                     <a href="?tab=data-siswa">
@@ -313,6 +316,10 @@ $jumlahKehadiran = mysqli_num_rows($queryKehadiran)
                     </a>
                 </div>
             </div>
+                    <?php
+                }
+            ?>
+
             <div class="col">
                 <div class="card" style="user-select: none;">
                     <a href="?tab=absensi-siswa">

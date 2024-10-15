@@ -306,10 +306,10 @@ require "../../private/function/db_init.php";
                                     </div>
 
                                     <div class="mb-3">
-                                        <label for="jenisKelaminInput" class="form-label">Jenis Kelamin</label>
-                                        <select class="form-select" aria-label="Default select example" id="jenisKelaminInput" name="jenisKelamin" >
-                                            <option value="laki-laki">Laki-laki</option>
-                                            <option value="perempuan">Perempuan</option>
+                                        <label for="jenisAkunInput" class="form-label">Jenis Akun</label>
+                                        <select class="form-select" aria-label="Default select example" id="jenisAkunInput" name="jenisAkun" >
+                                            <option value="admin">Admin</option>
+                                            <option value="petugas">Petugas</option>
                                         </select>
                                     </div>
 
@@ -318,7 +318,7 @@ require "../../private/function/db_init.php";
                             </div>
 
                             
-                            <button type="submit" class="btn btn-primary mb-3" name="submitForm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambahkan</button>
+                            <button type="submit" class="btn btn-primary mb-3" name="submitForm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambahkan</button>
                             <a href="./?tab=data-guru" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
                         </form>
                     </div>
@@ -330,7 +330,7 @@ require "../../private/function/db_init.php";
                         $email = htmlspecialchars($_POST['email']);
                         $nama = htmlspecialchars($_POST['nama']);
                         $noHp = htmlspecialchars($_POST['noHp']);
-                        $jenisKelamin = htmlspecialchars($_POST['jenisKelamin']);
+                        $jenisAkun = htmlspecialchars($_POST['jenisAkun']);
                         $password = htmlspecialchars($_POST['password']);
 
                         //i checking for the duplicated teacher data in case the admin forgot and input the data twice
@@ -345,7 +345,7 @@ require "../../private/function/db_init.php";
                             <?php
                         } else {
                             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-                            $querySimpan = mysqli_query($con, "INSERT INTO `guru`(`email`, `nama`, `jenis_kelamin`, `no_guru`, `password`) VALUES ('$email','$nama','$jenisKelamin','$noHp','$hashedPassword')");
+                            $querySimpan = mysqli_query($con, "INSERT INTO `guru`(`email`, `nama`, `jenis_akun`, `no_guru`, `password`) VALUES ('$email','$nama','$jenisAkun','$noHp','$hashedPassword')");
                             
                             if($querySimpan){
                                 ?>

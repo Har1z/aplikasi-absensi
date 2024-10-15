@@ -345,7 +345,7 @@ require "../../private/function/db_init.php";
                             </div>
 
                             
-                            <button type="submit" class="btn btn-primary mb-3" name="submitForm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);transform: ;msFilter:;"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambahkan</button>
+                            <button type="submit" class="btn btn-primary mb-3" name="submitForm"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: rgba(255, 255, 255, 1);"><path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path></svg> Tambahkan</button>
                             <a href="./?tab=data-siswa" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
                         </form>
                     </div>

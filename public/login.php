@@ -131,10 +131,12 @@ require "../private/function/db_init.php";
                                                         $_SESSION['login'] = true;
                                                         echo $role; // you get the role exactly where you stop
                                                         if ($role == "admin") {
+                                                            $_SESSION['jenis_akun'] = "admin";
                                                             header("location: ./guru");
                                                             ob_end_flush();
                                                             die();
                                                         } else if ($role == "guru") {
+                                                            $_SESSION['jenis_akun'] = $data['jenis_akun'];
                                                             header("location: ./guru");
                                                             ob_end_flush();
                                                             die();

@@ -306,9 +306,10 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Nama</th>
                                                 <th scope="col">Email</th>
-                                                <th scope="col">Jenis Kelamin</th>
+                                                <th scope="col">Jenis Akun</th>
                                                 <th scope="col">No. Guru</th>
                                                 <th scope="col" class="text-center">Aksi</th>
+                                                <!-- <th> <?php echo $_SESSION['jenis_akun'] ?></th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -332,7 +333,7 @@
                                                             <th scope="row"> <?=$nomor?> </th>
                                                             <td><?= $data['nama']?></td>
                                                             <td><?= $data['email']?></td>
-                                                            <td><?= $data['jenis_kelamin']?></td>
+                                                            <td><?= $data['jenis_akun']?></td>
                                                             <td><?= $data['no_guru']?></td>
                                                             <td class="user-select-none text-center">
                                                                 <a href="./?tab=edit-data-guru&q=<?= $data['id_g'] ?>" type="button" class="btn btn-primary">Edit</a>
