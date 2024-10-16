@@ -436,6 +436,7 @@ $telat = date('Hi') > 705;
                                                         $presensi = 1;
                                                     }
 
+                                                    $presensi = ($_SESSION['role'] == "admin") ? 1 : $presensi;
                                                     if ($presensi != 0){
 
                                                     ?>
