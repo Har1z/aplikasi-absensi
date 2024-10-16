@@ -371,7 +371,7 @@ $telat = date('Hi') > 705;
                                         </path>
                                     </svg> Refresh</button>
                                 </form>
-                                <!-- <a href="./?tab=absen-manual" type="button" class="btn btn-primary mb-3" style="user-select: none;"><span class=""> Absen Manual </span></a> -->
+                                <a href="./?tab=absen-manual" type="button" class="btn btn-primary mb-3" style="user-select: none;"><span class=""> Absen Manual </span></a>
                             </div>
 
                             <div class="col-12">

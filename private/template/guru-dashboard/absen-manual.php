@@ -6,13 +6,10 @@ require "../../private/function/db_init.php";
 require_once('../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
 require_once('../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
     
-// $token="rw70t1qrzrhqs9fc"; // Ultramsg.com token
-// $instance_id="instance92651"; // Ultramsg.com instance id
-// $client = new UltraMsg\WhatsAppApi($token,$instance_id);
 
-$token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
-$instance_id_2="instance92836"; // Ultramsg.com instance id
-$client_2 = new UltraMsgs\WhatsAppApi($token_2,$instance_id_2);
+$token="x0gcrs0q2pxwmtga"; // Ultramsg.com token
+$instance_id="instance96969"; // Ultramsg.com instance id
+$client = new UltraMsgs\WhatsAppApi($token,$instance_id);
 
 $todayDate = date('Y').'-'.date('m').'-'.date('d');
 $telat = date('Hi') > 705;
@@ -288,7 +285,7 @@ $telat = date('Hi') > 705;
                 <div class="shadow-sm rounded bg-white overflow-scroll hide-scrollbar">
                     <div class="container-fluid mt-3">
                         <h4 class="fw-bold mb-3">Absen manual</h4>
-                        <p class="fw-light">*untuk sementara waktu fitur notifikasi whatsapp pada absen manual tidak berfungsi</p>
+                        <!-- <p class="fw-light">*untuk sementara waktu fitur notifikasi whatsapp pada absen manual tidak berfungsi</p> -->
                         
                         <div class="row mb-2">
 
@@ -304,24 +301,6 @@ $telat = date('Hi') > 705;
                                     <option value="pulang">Pulang</option>
                                 </select>
                                 
-                                <!-- <label class="form-label"><b>Kehadiran</b></label>
-                                <?php
-                                for($i = 1; $i <=3; $i++) {
-                                    $kehadiran = kehadiran($i)
-                                    ?>
-                                    <div class="row">
-                                        <div class="col-auto pr-1 pt-1">
-                                            <input class="form-check" type="radio" name="kehadiran" id="k-<?= $i ?>" value="<?= $i ?>" >
-                                        </div>
-                                        <div class="col">
-                                            <label class="form-check-label pl-0" for="k-<?= $i ?>">
-                                                <h6 class="text-<?= $kehadiran['color']; ?>"><?= $kehadiran['text']; ?></h6>
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <?php
-                                }
-                                ?> -->
 
                                 <label for="inputKet" class="form-label mt-2"><b>Keterangan (opsional)</b></label>
                                 <input type="text" name="keterangan" id="inputKet" class="form-control mb-4">
@@ -371,9 +350,9 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                         // // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     } else if (mysqli_num_rows($cekAbsen) == 1) {
                                                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$nisn' AND tgl='$todayDate'");
@@ -384,9 +363,9 @@ $telat = date('Hi') > 705;
                                                         <?php
                                 
                                                         // send messages
-                                                        // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                        $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                         // // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                         break;
                                                     }
                                                 }
@@ -400,9 +379,9 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 } else {
                                                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                     ?>
@@ -412,27 +391,38 @@ $telat = date('Hi') > 705;
                                                     <?php
                                 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                                                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
                                                 }
                                                 break;
                                             
                                             case 'pulang':
                                                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate'");
-                                                // $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
-                                                // $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
+                                                $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
+                                                $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
                                                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_pulang IS NOT NULL");
                                                 $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
-                                                // if (mysqli_num_rows($belumHadir) != 1) {
-                                                //     ?>
-                                                     <!-- <div class="alert alert-warning mt-3" role="alert">
-                                                //         siswa dengan nisn: <?= $nisn ?> belum melakukan absen hari ini.
-                                                //     </div> -->
-                                                     <?php
-                                                //     break;
-                                                // }
+                                                if (mysqli_num_rows($belumHadir) != 1) {
+                                                    $randomize = "6".rand(34,57).rand(11, 59);
+                                                    if (mysqli_num_rows($cekAbsen) != 0) {
+                                                        $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$randomize', absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
+                                                        ?>
+                                                        <div class="alert alert-success mt-3" role="alert">
+                                                            berhasil absen pulang siswa dengan nisn: <?= $nisn ?>.
+                                                        </div>
+                                                        <?php
+                                                    } else if (mysqli_num_rows($cekAbsen) == 0) {
+                                                        $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`, `kehadiran`, `absen_masuk`, `absen_pulang`) VALUES ('$code','$date','1','$randomize','$time')");
+                                                        ?>
+                                                        <div class="alert alert-success mt-3" role="alert">
+                                                            berhasil absen pulang siswa dengan nisn: <?= $nisn ?>.
+                                                        </div>
+                                                        <?php
+                                                    }
+                                                    break;
+                                                }
 
                                                 if (mysqli_num_rows($sudahPulang) != 0) {
                                                     ?>
@@ -449,9 +439,9 @@ $telat = date('Hi') > 705;
                                                     <?php
 
                                                     // send messages
-                                                    // $nomor = "+62" . substr($data['no_orangtua'], 1);
+                                                    $nomor = "+62" . substr($data['no_orangtua'], 1);
                                                     // // $to="+XX888888"; // change to $nomor and un-comment code above
-                                                    // $api=$client_2->sendChatMessage($nomor,$pesanPulang);
+                                                    $api=$client->sendChatMessage($nomor,$pesanPulang);
                                                 } else {
                                                     ?>
                                                     <div class="alert alert-warning mt-3" role="alert">

@@ -52,7 +52,7 @@ require "../private/function/db_init.php";
                                     style="border-radius: 1rem 0 0 1rem; filter: blur(4px) brightness(.65);;" />
 
                                 <!-- Clock & date -->
-                                <div class="a-clock" style="">
+                                <div class="a-clock">
                                     <?php include "../private/template/analog-clock.php"; ?>
                                 </div>
                                 <div id="d-clock"></div>

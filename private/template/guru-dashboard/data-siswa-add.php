@@ -192,7 +192,7 @@ require "../../private/function/db_init.php";
 
         /* Firefox */
         input[type=number] {
-            -moz-appearance: textfield;
+            appearance: textfield;
         }
 
         @media screen and (min-width: 768px) {
