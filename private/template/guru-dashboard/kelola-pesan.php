@@ -6,6 +6,15 @@ require "../../private/function/db_init.php";
 $todayDate = date('Y') . '-' . date('m') . '-' . date('d');
 $telat = date('Hi') > 705;
 
+$queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
+$data = mysqli_fetch_array($queryConfig);
+$pesanHadir = $data['pesan_hadir'];
+$pesanPulang = $data['pesan_pulang'];
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $pesanHadir = $_POST['pesanHadir'];
+    $pesanPulang = $_POST['pesanPulang'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -305,47 +314,75 @@ $telat = date('Hi') > 705;
         <div class="row">
             <div id="refresh" hidden></div>
 
-            <div class="col-12 col-lg-6 mb-4 mt-2">
+            <div class="col-12 col-lg-8 mb-4 mt-2">
                 <div class="shadow-sm rounded bg-white overflow-scroll hide-scrollbar">
                     <div class="container-fluid mt-3">
-                        <h4 class="fw-bold mb-3">Kelola Pesan</h4>
+                        <h4 class="fw-bold mb-3 fs-3">Kelola Pesan</h4>
                         <p class="fw-light"></p>
 
                         <div class="row mb-2">
 
                             <div class="col-12">
-                                <form id="notificationForm" action="" method="post">
+                                <form id="notificationForm" method="post">
 
-                                    <label for="inputNisn" class="form-label mt-3"><b>Pesan Absen Masuk</b></label>
-                                    <textarea name="pesanPulang" class="form-control mb-2" id="" form="notificationForm"></textarea>
-                                    <label for="inputNisn" class="form-label"><b>Tampilan absen Masuk</b></label>
+                                    <label for="input" class="form-label mt-1"><b>Pesan Absen Masuk</b></label>
+                                    <textarea name="pesanHadir" class="form-control mb-2" id="inputHadir" form="notificationForm"><?= $pesanHadir ?></textarea>
+                                    <label for="input" class="form-label mt-2"><b>Tampilan absen Masuk</b></label>
                                     <div class="preview-chat mb-4">
                                         <div class="chat-bubble">
-                                        Assalamualaikum Wr.Wb, ayah/bunda Ananda {nama siswa} sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda {nama siswa}. Aamin, wassalamualaikum.
-                                            <span class="chat-time">07.59</span>
+                                            <p class="fs-6" id="pesan-masuk"><?php echo str_replace("{nama_siswa}", "Nur Khoiriah Sitompul", $pesanHadir)?></p>
+                                            <span class="chat-time">05.23</span>
                                         </div>
                                     </div>
 
-                                    <label for="absenInput" class="form-label"><b>Pesan Absen Pulang</b></label>
-                                    <textarea name="pesanPulang" class="form-control mb-2" id="" form="notificationForm"></textarea>
-                                    <label for="inputNisn" class="form-label"><b>Tampilan absen Pulang</b></label>
+                                    <label for="input" class="form-label mt-4"><b>Pesan Absen Pulang</b></label>
+                                    <textarea name="pesanPulang" class="form-control mb-2" id="inputPulang" form="notificationForm"><?= $pesanPulang ?></textarea>
+                                    <label for="input" class="form-label mt-2"><b>Tampilan absen Pulang</b></label>
                                     <div class="preview-chat mb-3">
                                         <div class="chat-bubble">
-                                            Bisaaa bangettt
-                                            <span class="chat-time">07.59</span>
+                                            <p class="fs-6" id="pesan-pulang"><?php echo str_replace("{nama_siswa}", "Nur Khoiriah Sitompul", $pesanPulang)?></p>
+                                            <span class="chat-time">07.13</span>
                                         </div>
                                     </div>
 
                                     <button type="submit" class="btn btn-primary mb-3" name="submitForm">Simpan</button>
-                                    <a href="./" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
+                                    <a href="./" type="button" class="btn btn-light border mb-3 user-select-none">kembali</a>
                                 </form>
+
+                                <?php
+                                if (isset($_POST['submitForm'])) {
+                                    $pesanHadir = $_POST['pesanHadir'];
+                                    $pesanPulang = $_POST['pesanPulang'];
+
+                                    $querySimpan = mysqli_query($con, "UPDATE config SET `pesan_hadir`='$pesanHadir', `pesan_pulang`='$pesanPulang'");
+                                    if($querySimpan){
+                                        ?>
+                                        <div class="alert alert-success mt-3" role="alert">
+                                            Data berhasil diperbarui.
+                                        </div>
+                                        <?php
+            
+                                    }
+                                    else{
+                                        echo mysqli_error($con);
+                                    }
+                                }
+                                ?>
 
                             </div>
 
                         </div>
 
                     </div>
+                    
                 </div>
+            </div>
+            <div class="col-lg-3 col-xl-4">
+                <h3 class="mt-2"><b>Tips</b></h3>
+                <ul class="pl-3">
+                    <li>gunakan "{nama_siswa}" untuk menyebutkan nama siswa di notifikasi whatsapp</li>
+                    <li>nama siswa yang muncul pada tampilan hanya sebagai contoh</li>
+                </ul>
             </div>
 
         </div>
@@ -430,6 +467,28 @@ $telat = date('Hi') > 705;
         showNavbar('header-toggle', 'nav-bar', 'body-pd', 'header')
 
         // Your code to run since DOM is loaded and ready
+    });
+
+    const inputHadir = document.getElementById('inputHadir');
+    const displayHadir = document.getElementById('pesan-masuk');
+    const inputPulang = document.getElementById('inputPulang');
+    const displayPulang = document.getElementById('pesan-pulang');
+    let timeoutId;
+
+    inputHadir.addEventListener('input', () => {
+        clearTimeout(timeoutId); // Hentikan timeout sebelumnya jika ada
+        timeoutId = setTimeout(() => {
+            let result = inputHadir.value.replace(/{nama_siswa}/g, "Nur Khoiriah Sitompul");
+            displayHadir.textContent = result; // Tampilkan isi input
+        }, 200); // 500 ms
+    });
+
+    inputPulang.addEventListener('input', () => {
+        clearTimeout(timeoutId); // Hentikan timeout sebelumnya jika ada
+        timeoutId = setTimeout(() => {
+            let result = inputPulang.value.replace(/{nama_siswa}/g, "Nur Khoiriah Sitompul");
+            displayPulang.textContent = result; // Tampilkan isi input
+        }, 200); // 500 ms
     });
 </script>
 

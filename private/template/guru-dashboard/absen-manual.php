@@ -329,7 +329,10 @@ $telat = date('Hi') > 705;
                                             case 'masuk':
                                                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate'");
                                                 $sudahHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
-                                                $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
+                                                $queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
+                                                $dataConfig = mysqli_fetch_array($queryConfig);
+                                                $pesanMasuk = str_replace("{nama_siswa}", $data['nama'], $dataConfig['pesan_hadir']);
+                                                // $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
 
                                                 if (mysqli_num_rows($sudahHadir) != 0) {
                                                     ?>
@@ -402,7 +405,10 @@ $telat = date('Hi') > 705;
                                                 $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL");
                                                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
                                                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$nisn' AND tgl='$todayDate' AND absen_pulang IS NOT NULL");
-                                                $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
+                                                $queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
+                                                $dataConfig = mysqli_fetch_array($queryConfig);
+                                                $pesanPulang = str_replace("{nama_siswa}", $data['nama'], $dataConfig['pesan_pulang']);
+                                                // $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
                                                 if (mysqli_num_rows($belumHadir) != 1) {
                                                     $randomize = "6".rand(34,57).rand(11, 59);

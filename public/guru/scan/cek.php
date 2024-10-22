@@ -32,7 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             case 'masuk':
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
                 $sudahHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
-                $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
+                $queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
+                $dataConfig = mysqli_fetch_array($queryConfig);
+                $pesanMasuk = str_replace("{nama_siswa}", $data['nama'], $dataConfig['pesan_hadir']);
+                // $pesanMasuk = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah hadir di sekolah, mari kita doakan Ananda menjadi anak yang soleh/solehah. Aamin, wassalamualaikum.";
 
                 if (mysqli_num_rows($sudahHadir) != 0) {
                     showErrorView('Anda sudah absen hari ini', $data, mysqli_fetch_array($cekAbsen));
@@ -80,7 +83,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
                 $belumHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
                 $sudahPulang = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL AND absen_pulang IS NOT NULL");
-                $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
+                $queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
+                $dataConfig = mysqli_fetch_array($queryConfig);
+                $pesanPulang = str_replace("{nama_siswa}", $data['nama'], $dataConfig['pesan_pulang']);
+                // $pesanPulang = "Assalamualaikum Wr.Wb, ayah/bunda Ananda ".$data['nama']." sudah pulang dari sekolah, semoga ilmu yang diterima dapat bermanfaat untuk keberhasilan Ananda ".$data['nama'].". Aamin, wassalamualaikum.";
 
                 // PrOBLEMATIC
                 // bukan problematic cuma programmer aja lupa kasih koma di query duhhhh
