@@ -284,7 +284,7 @@
                     <div class="container-fluid">
                         <form action="" method="POST">
                             <div class="row">
-                                <div class="col-4 mb-3">
+                                <div class="col-12 col-lg-4 mb-3">
 
                                     <div class="mb-3 mt-3">
                                         <label for="nisnInput" class="form-label">NISN</label>
@@ -303,7 +303,7 @@
 
                                 </div>
 
-                                <div class="col-4 mb-3">
+                                <div class="col-12 col-lg-4 mb-3">
 
                                     <div class="mb-3 mt-3">
                                         <label for="namaInput" class="form-label">Nama siswa</label>
