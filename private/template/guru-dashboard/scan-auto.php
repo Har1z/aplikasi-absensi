@@ -186,7 +186,7 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                     // Giving the scanner a delay between result
                     qrCodeScanner.pause();
                     // Removing unwanted "paused scanner" banner on the camera when on delay
-                    document.querySelector("#previewKamera > div").removeAttribute("style");
+                    // document.querySelector("#previewKamera > div").removeAttribute("style");
                     document.querySelector("#previewKamera > div").innerHTML = `${qrCodeMessage}`;
                     setTimeout(() => {
                         qrCodeScanner.resume();
@@ -222,8 +222,8 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                     // Giving the scanner a delay between result
                     html5QrCode.pause();
                     // Removing unwanted "paused scanner" banner on the camera when on delay
-                    document.querySelector("#previewKamera > div").removeAttribute("style");
-                    document.querySelector("#previewKamera > div").innerHTML = '';
+                    // document.querySelector("#previewKamera > div").removeAttribute("style");
+                    // document.querySelector("#previewKamera > div").innerHTML = '';
 
                     setTimeout(() => {
                         html5QrCode.resume();
