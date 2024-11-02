@@ -1,12 +1,12 @@
 <?php
 require "../../../private/function/db_init.php";
 
+require_once('../../../library/fonnte/fonnte.php');
 require_once('../../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
-require_once('../../../library/ultra-msg/ultramsg-2.class.php'); // if you download ultramsg.class.php
     
-$token="x0gcrs0q2pxwmtga"; // Ultramsg.com token
-$instance_id="instance96969"; // Ultramsg.com instance id
-$client = new UltraMsg\WhatsAppApi($token,$instance_id);
+// $token="x0gcrs0q2pxwmtga"; // Ultramsg.com token
+// $instance_id="instance96969"; // Ultramsg.com instance id
+// $client = new UltraMsg\WhatsAppApi($token,$instance_id);
 
 // $token_2="zuk4oh7usbxn4t7i"; // Ultramsg.com token
 // $instance_id_2="instance92836"; // Ultramsg.com instance id
@@ -49,7 +49,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         // send messages
                         $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                        SendMessage($nomor, $pesanMasuk);
+                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                         break;
                     } else {
                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time', ket='terlambat datang' WHERE nisn='$code' AND tgl='$date'");
@@ -57,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                         // send messages
                         $nomor = "+62" . substr($data['no_orangtua'], 1);
-                        $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                        SendMessage($nomor, $pesanMasuk);
+                        // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                         break;
                     }
                 }
@@ -68,14 +70,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                    SendMessage($nomor, $pesanMasuk);
+                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                 } else {
                     $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$time' WHERE nisn='$code' AND tgl='$date'");
                     resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $api=$client->sendChatMessage($nomor,$pesanMasuk);
+                    SendMessage($nomor, $pesanMasuk);
+                    // $api=$client->sendChatMessage($nomor,$pesanMasuk);
                 }
                 break;
 
@@ -110,7 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                     // send messages
                     $nomor = "+62" . substr($data['no_orangtua'], 1);
-                    $api=$client->sendChatMessage($nomor,$pesanPulang);
+                    SendMessage($nomor, $pesanPulang);
+                    // $api=$client->sendChatMessage($nomor,$pesanPulang);
                 } else {
                     showErrorView('Terjadi kesalahan');
                 }
