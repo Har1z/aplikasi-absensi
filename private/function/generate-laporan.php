@@ -257,12 +257,12 @@ function GenerateXlsx($month, $kelas) {
 
     //panduan
     
-    $sheet->setCellValue('D'.(2 + $counter), 'PANDUAN SIMBOL:');
-    $sheet->setCellValue('D'.(3 + $counter), 'H = Hadir');
-    $sheet->setCellValue('D'.(4 + $counter), 'S = Sakit');
-    $sheet->setCellValue('D'.(5 + $counter), 'I = Izin');
-    $sheet->setCellValue('D'.(6 + $counter), 'A = Alfa (tanpa keterangan)');
-    $sheet->setCellValue('D'.(7 + $counter), '- = Hari libur (sabtu, minggu)');
+    $sheet->setCellValue('D'.(2 + $counter + 7), 'PANDUAN SIMBOL:');
+    $sheet->setCellValue('D'.(3 + $counter + 7), 'H = Hadir');
+    $sheet->setCellValue('D'.(4 + $counter + 7), 'S = Sakit');
+    $sheet->setCellValue('D'.(5 + $counter + 7), 'I = Izin');
+    $sheet->setCellValue('D'.(6 + $counter + 7), 'A = Alfa (tanpa keterangan)');
+    $sheet->setCellValue('D'.(7 + $counter + 7), '- = Hari libur (sabtu, minggu)');
 
     $sheet->getStyle('D'.(2 + $counter).':D'.(7 + $counter))->getAlignment()->setHorizontal(Alignment::HORIZONTAL_LEFT);
 
