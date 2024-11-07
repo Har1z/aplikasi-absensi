@@ -460,8 +460,8 @@ $telat = date('Hi') > 705;
                                                     </tr>
                                                     <?php
 
-                                                    }
                                                     $nomor++;
+                                                    }
 
 
                                                 }
