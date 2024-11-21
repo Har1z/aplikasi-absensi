@@ -174,6 +174,22 @@ function showErrorView(string $msg = 'no error message', $data = NULL, $presensi
 
 function resultView($waktu, $data, $presensi) 
 {
+    if ($data['nisn'] == "0089745533") {
+        ?>
+        <h3 class="text-primary">Absen <?= $waktu; ?> berhasil</h3>
+        <div class="row w-100">
+            <div class="col">
+                <p>Nama : <b class="text-primary"><?= $data['nama']; ?></b></p>
+                <p>NISN : <b><?= $data['nisn']; ?></b></p>
+                <p>Kelas : <b><?= $data['kelas']  . ' - ' . $data['jurusan']; ?></b></p>
+            </div>
+            <div class="col">
+                <?= jam($presensi); ?>
+            </div>
+        </div>
+        
+        <?php
+    } else {
     ?>
     <h3 class="text-success">Absen <?= $waktu; ?> berhasil</h3>
     <div class="row w-100">
@@ -188,6 +204,7 @@ function resultView($waktu, $data, $presensi)
     </div>
     
     <?php
+    }
 }
 
 function jam($presensi)
