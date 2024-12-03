@@ -99,9 +99,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     if (mysqli_num_rows($cekAbsen) != 0) {
                         $queryUpdateAbsensi = mysqli_query($con, "UPDATE absen SET kehadiran='1', absen_masuk='$randomize', absen_pulang='$time' WHERE nisn='$code' AND tgl='$date'");
                         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+
+                        // send messages
+                        $nomor = "+62" . substr($data['no_orangtua'], 1);
+                        SendMessage($nomor, $pesanPulang);
                     } else if (mysqli_num_rows($cekAbsen) == 0) {
                         $queryCreateAbsensi = mysqli_query($con, "INSERT INTO absen (`nisn`, `tgl`, `kehadiran`, `absen_masuk`, `absen_pulang`) VALUES ('$code','$date','1','$randomize','$time')");
                         resultView($waktu, $data,mysqli_fetch_array($cekAbsen));
+
+                        // send messages
+                        $nomor = "+62" . substr($data['no_orangtua'], 1);
+                        SendMessage($nomor, $pesanPulang);
                     }
                     break;
                 }
