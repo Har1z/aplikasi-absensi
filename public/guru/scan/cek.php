@@ -31,6 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         switch ($waktu) {
             case 'masuk':
                 $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
+                // $cekAbsen = cekAbsen($code, $date);
                 $sudahHadir = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date' AND absen_masuk IS NOT NULL");
                 $queryConfig = mysqli_query($con, "SELECT * FROM config WHERE id='1'");
                 $dataConfig = mysqli_fetch_array($queryConfig);
@@ -139,6 +140,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "No POST request received.";
 }
 
+// *note :: im not sure if this thing would work
+// function cekAbsen($code, $date) 
+// {
+//     global $con;
+
+//     $cekAbsen = mysqli_query($con, "SELECT * FROM absen WHERE nisn='$code' AND tgl='$date'");
+//     return $cekAbsen;
+// }
 
 function cekData($con, $nisn)
 {

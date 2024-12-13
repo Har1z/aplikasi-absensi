@@ -330,6 +330,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="input" class="form-label mt-2"><b>Tampilan absen Masuk</b></label>
                                     <div class="preview-chat mb-4">
                                         <div class="chat-bubble">
+                                            <!-- 
+                                            why does the previous developer put so much things about "Nur Khoiriah Sitompul" ?? 
+                                            the simplest things i could say is.. i think i admire her for uncertain reason
+                                            but at the end, this feeling never reached the top and it ended with sad ending
+                                            -->
                                             <p class="fs-6" id="pesan-masuk"><?php echo str_replace("{nama_siswa}", "Nur Khoiriah Sitompul", $pesanHadir)?></p>
                                             <span class="chat-time">05.23</span>
                                         </div>

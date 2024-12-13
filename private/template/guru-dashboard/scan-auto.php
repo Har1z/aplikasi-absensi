@@ -253,9 +253,10 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                     // console.log(response);
                     $('#hasilScan').html(response);
 
-                    $('html, body').animate({
-                        scrollTop: $("#hasilScan").offset().top
-                    }, 500);
+                    // removing the scroll cuz it unnecessary (13 dec 2024)
+                    // $('html, body').animate({
+                    //     scrollTop: $("#hasilScan").offset().top
+                    // }, 500);
                 },
                 error: function (xhr, status, thrown) {
                     console.log(thrown);
