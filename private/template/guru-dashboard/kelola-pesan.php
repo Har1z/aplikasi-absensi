@@ -335,7 +335,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                             the simplest things i could say is.. i think i admire her for uncertain reason
                                             but at the end, this feeling never reached the top and it ended with sad ending
                                             -->
-                                            <p class="fs-6" id="pesan-masuk"><?php echo str_replace("{nama_siswa}", "Nur Khoiriah Sitompul", $pesanHadir)?></p>
+                                            <!-- 
+                                            i changed it cuz i got the newest info (2 jan 2025) 
+                                            i guess i'm starting 2025 with goodbye (haha)
+                                            -->
+                                            <p class="fs-6" id="pesan-masuk"><?php echo str_replace("{nama_siswa}", "Faris", $pesanHadir)?></p>
                                             <span class="chat-time">05.23</span>
                                         </div>
                                     </div>
@@ -345,7 +349,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <label for="input" class="form-label mt-2"><b>Tampilan absen Pulang</b></label>
                                     <div class="preview-chat mb-3">
                                         <div class="chat-bubble">
-                                            <p class="fs-6" id="pesan-pulang"><?php echo str_replace("{nama_siswa}", "Nur Khoiriah Sitompul", $pesanPulang)?></p>
+                                            <p class="fs-6" id="pesan-pulang"><?php echo str_replace("{nama_siswa}", "Faris", $pesanPulang)?></p>
                                             <span class="chat-time">07.13</span>
                                         </div>
                                     </div>
@@ -483,7 +487,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     inputHadir.addEventListener('input', () => {
         clearTimeout(timeoutId); // Hentikan timeout sebelumnya jika ada
         timeoutId = setTimeout(() => {
-            let result = inputHadir.value.replace(/{nama_siswa}/g, "Nur Khoiriah Sitompul");
+            let result = inputHadir.value.replace(/{nama_siswa}/g, "Faris");
             displayHadir.textContent = result; // Tampilkan isi input
         }, 200); // 500 ms
     });
@@ -491,7 +495,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     inputPulang.addEventListener('input', () => {
         clearTimeout(timeoutId); // Hentikan timeout sebelumnya jika ada
         timeoutId = setTimeout(() => {
-            let result = inputPulang.value.replace(/{nama_siswa}/g, "Nur Khoiriah Sitompul");
+            let result = inputPulang.value.replace(/{nama_siswa}/g, "Faris");
             displayPulang.textContent = result; // Tampilkan isi input
         }, 200); // 500 ms
     });

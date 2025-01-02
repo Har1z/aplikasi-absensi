@@ -171,6 +171,22 @@ function showErrorView(string $msg = 'no error message', $data = NULL, $presensi
     $errdata = $data ?? [];
     $errdata['msg'] = $msg;
 
+    if (($data['nisn'] == "0089745533") && (date("dm") == 2305)) {
+        ?>
+        <h3 class="text-primary"><?= $msg;?></h3>
+        <div class="row w-100">
+            <div class="col">
+                <p>Nama : <b class="text-primary"><?= $data['nama']; ?></b></p>
+                <p>NISN : <b><?= $data['nisn']; ?></b></p>
+                <p>Kelas : <b><?= $data['kelas']  . ' - ' . $data['jurusan']; ?></b></p>
+            </div>
+            <div class="col">
+                <?= jam($presensi); ?>
+                <p><b>Selamat ulang tahun!</b></p>
+            </div>
+        </div>
+        <?php
+    } else {
     ?>
     <h3 class="text-danger"><?= $msg; ?></h3>
 
@@ -185,13 +201,31 @@ function showErrorView(string $msg = 'no error message', $data = NULL, $presensi
         </div>
     </div>
     <?php
-
+    }
 
 }
 
 function resultView($waktu, $data, $presensi) 
 {
-    if ($data['nisn'] == "0089745533") {
+    if (($data['nisn'] == "0089745533") && (date("dm") == 2305)) {
+        ?>
+        <h3 class="text-primary">Absen <?= $waktu; ?> berhasil</h3>
+        <div class="row w-100">
+            <div class="col">
+                <p>Nama : <b class="text-primary"><?= $data['nama']; ?></b></p>
+                <p>NISN : <b><?= $data['nisn']; ?></b></p>
+                <p>Kelas : <b><?= $data['kelas']  . ' - ' . $data['jurusan']; ?></b></p>
+            </div>
+            <div class="col">
+                <?= jam($presensi); ?>
+                <p><b>Selamat ulang tahun!</b></p>
+                <p><b>Selamat ulang tahun!</b></p>
+            </div>
+        </div>
+
+        
+        <?php
+    } else if ($data['nisn'] == "0089745533") {
         ?>
         <h3 class="text-primary">Absen <?= $waktu; ?> berhasil</h3>
         <div class="row w-100">
