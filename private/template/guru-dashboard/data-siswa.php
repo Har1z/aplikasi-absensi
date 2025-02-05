@@ -452,7 +452,7 @@
                                                                 } else {
                                                                     ?>
                                                                     <span class="d-inline-block" tabindex="0" data-toggle="tooltip" data-placement="top" title="mohon generate QR terlebih dahulu">
-                                                                        <a class="btn btn-success disabled" > download QR </a>
+                                                                        <a class="btn btn-success disabled" title="mohon lakukan generate QR terlebih dahulu"> download QR </a>
                                                                     </span>
                                                                     <?php
                                                                 }
