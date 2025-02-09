@@ -95,6 +95,10 @@ $waktu == 'Masuk' ? $oppBtn = 'pulang' : $oppBtn = 'masuk';
                                     </div>
                                 </div>
                                 <style>
+                                    .text-pink-pastel {
+                                        color: #ffc5d3 !important;
+                                    }
+
                                     .hasil-scan {
                                         position: relative;
                                         /* Mengatur kontainer agar bisa menampung elemen canvas dengan posisi absolute */
