@@ -31,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         sleep(1);
 
 
-        if (isset($_POST['kelas'])){
-            // create zip or rewrite
-            generateZip("QR_code_kelas_", $_POST['kelas']);
-        } else {
-            //create zip or rewrite
-            generateZip("QR_code", null);
-        }
+        // if (isset($_POST['kelas'])){
+        //     // create zip or rewrite
+        //     generateZip("QR_code_kelas_", $_POST['kelas']);
+        // } else {
+        // }
+        //create zip or rewrite
+        generateZip("QR_code", null);
 
         ?>
         <meta http-equiv="refresh" content="0.2; url=./?tab=generate-qr" />
@@ -103,10 +103,7 @@ function generateZip($namaZip, $kelas) {
     $queryData = mysqli_query($con, $query);
 
     $zip = new ZipArchive;
-    $path = "../resources/images/QRcode/QR-zip/".$namaZip.".zip";
-    if (!file_exists("../resources/images/QRcode/QR-zip/")) {
-        mkdir("../resources/images/QRcode/QR-zip/");
-    }//Buat folder
+    $path = "../resources/images/QRcode/".$namaZip.".zip";
 
     if ($kelas != NULL) {
         $path = "../resources/images/QRcode/QR-zip/".$namaZip.$kelas.".zip";

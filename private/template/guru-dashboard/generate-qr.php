@@ -295,15 +295,15 @@
                                         Loading...
                                     </button>
                                     <?php
-                                        $filepath = "../resources/images/QRcode/QR-zip/QR_code.zip";
+                                        $filepath = "../resources/images/QRcode/QR_code.zip";
 
                                         if (file_exists($filepath)) {
                                             ?>
-                                                <a class="btn btn-success mt-3" href="../resources/images/QRcode/QR-zip/QR_code.zip" download="QR_code_all.zip" > Download All </a>  
+                                                <a class="btn btn-success mt-3" href="../resources/images/QRcode/QR_code.zip" download="QR_code_all.zip" > Download All </a>  
                                             <?php
                                         }else {
                                             ?>
-                                                <a class="btn btn-success disabled mt-3" href="../resources/images/QRcode/QR-zip/QR_code.zip" download="QR_code_all.zip" title="Mohon tekan tombol Generate all terlebih dahulu"> Download All </a>  
+                                                <a class="btn btn-success disabled mt-3" href="../resources/images/QRcode/QR_code.zip" download="QR_code_all.zip" title="Mohon tekan tombol Generate all terlebih dahulu"> Download All </a>  
                                             <?php
                                         }
                                         ?>
