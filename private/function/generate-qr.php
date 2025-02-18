@@ -104,8 +104,8 @@ function generateZip($namaZip, $kelas) {
 
     $zip = new ZipArchive;
     $path = "../resources/images/QRcode/QR-zip/".$namaZip.".zip";
-    if (!file_exists($path)) {
-        mkdir($path);
+    if (!file_exists("../resources/images/QRcode/QR-zip/")) {
+        mkdir("../resources/images/QRcode/QR-zip/");
     }//Buat folder
 
     if ($kelas != NULL) {

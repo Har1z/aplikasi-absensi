@@ -295,9 +295,9 @@
                                         Loading...
                                     </button>
                                     <?php
-                                        $filename = "../resources/images/QRcode/QR-zip/QR_code.zip";
+                                        $filepath = "../resources/images/QRcode/QR-zip/QR_code.zip";
 
-                                        if (file_exists($filename)) {
+                                        if (file_exists($filepath)) {
                                             ?>
                                                 <a class="btn btn-success mt-3" href="../resources/images/QRcode/QR-zip/QR_code.zip" download="QR_code_all.zip" > Download All </a>  
                                             <?php
