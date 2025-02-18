@@ -3,8 +3,9 @@ include "../../library/phpqrcode/qrlib.php";
 include "../../private/function/db_init.php";
 
 $tempdir = "../resources/images/QRcode/"; //Nama folder tempat menyimpan file qrcode
-if (!file_exists($tempdir)) //Buat folder 
+if (!file_exists($tempdir)) {
     mkdir($tempdir);
+}//Buat folder 
 
 //ambil logo
 $logopath = "../resources/images/logo.png";
@@ -103,6 +104,9 @@ function generateZip($namaZip, $kelas) {
 
     $zip = new ZipArchive;
     $path = "../resources/images/QRcode/QR-zip/".$namaZip.".zip";
+    if (!file_exists($path)) {
+        mkdir($path);
+    }//Buat folder
 
     if ($kelas != NULL) {
         $path = "../resources/images/QRcode/QR-zip/".$namaZip.$kelas.".zip";
