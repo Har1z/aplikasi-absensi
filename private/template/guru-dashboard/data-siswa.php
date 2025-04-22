@@ -439,7 +439,7 @@
                                                             <td><?= $data['no_siswa']?></td>
                                                             <td><?= $data['no_orangtua']?></td>
                                                             <td class="user-select-none text-center">
-                                                                <a href="./?tab=edit-data-siswa&q=<?= $data['nisn'] ?>" type="button" class="btn btn-primary">Edit</a>
+                                                                <a href="./?tab=edit-data-siswa&q=<?= $data['nisn'] ?><?= $filterJurusan == 0 ? "" : "&j=$filterJurusan" ?><?= $filterKelas == 0 ? "" : "&c=$filterKelas" ?>" type="button" class="btn btn-primary">Edit</a>
                                                                 <a href="./?tab=delete-siswa&q=<?= $data['nisn'] ?>" onclick="return confirm('Yakin ingin menghapus data?')" type="button" class="btn btn-danger">Delete</a>
                                                                 <!-- <a type="button" class="btn btn-success">Download QR</a> -->
                                                                 <?php

@@ -351,7 +351,12 @@
 
                             
                             <button type="submit" class="btn btn-primary mb-3" name="submit">Simpan</button>
-                            <a href="./?tab=data-siswa" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a>
+                            <button type="submit" class="btn btn-light border mb-3 user-select-none" value="Submit" form="back">cancel</button>
+                            <!-- <a href="./?tab=data-siswa" type="button" class="btn btn-light border mb-3 user-select-none">cancel</a> -->
+                        </form>
+                        <form method="POST" action="./?tab=data-siswa" id="back">
+                            <input type="hidden" name="kelas" value="<?= isset($_GET['c']) ? $_GET['c'] : 0 ?>" /> 
+                            <input type="hidden" name="jurusan" value="<?= isset($_GET['j']) ? $_GET['j'] : 0 ?>" /> 
                         </form>
                     </div>
                 </div>
@@ -397,7 +402,12 @@
                                     Data berhasil tersimpan.
                                 </div>
     
-                                <meta http-equiv="refresh" content="1; url=./?tab=data-siswa" />
+                                <script>
+                                    setTimeout(function() {
+                                    document.getElementById('back').submit();
+                                    }, 1000);
+                                </script>
+                                <!-- <meta http-equiv="refresh" content="1; url=./?tab=data-siswa" /> -->
                                 <?php
     
                             }

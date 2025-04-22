@@ -34,13 +34,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
         if ($query){
             // echo $tgl."<br>".$nisn."<br>".$kehadiran."<br>".$absenMasuk."<br>".$absenPulang."<br>".$keterangan;
             // echo "data berhasil disimpan";
-            ?>
-            <script>
-                setTimeout(function() {
-                    document.getElementById("filter").submit();
-                }, 200);
-            </script>
-            <?php
+            
+            // old me return this useless refresh, but since i'm refractoring this
+            // i'll just return nothing and change data in the page without shitty refresh :D (Apr 22, 2025)
+
+            // <script>
+            //     setTimeout(function() {
+            //         document.getElementById("filter").submit();
+            //     }, 200);
+            // </script>
+
+            return ;
         }
 
     } else if (isset($_POST['delete'])) {

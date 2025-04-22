@@ -2,7 +2,7 @@
 require "../../../private/function/db_init.php";
 
 require_once('../../../library/fonnte/fonnte.php');
-require_once('../../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
+// require_once('../../../library/ultra-msg/ultramsg.class.php'); // if you download ultramsg.class.php
     
 // $token="x0gcrs0q2pxwmtga"; // Ultramsg.com token
 // $instance_id="instance96969"; // Ultramsg.com instance id

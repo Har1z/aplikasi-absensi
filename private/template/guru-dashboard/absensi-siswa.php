@@ -403,6 +403,7 @@ $telat = date('Hi') > 705;
                                                     </tr>';
                                             } else {
                                                 $nomor = 1;
+                                                // var_dump(mysqli_fetch_all($querySiswa));
 
                                                 while ($data = mysqli_fetch_array($querySiswa)) {
                                                     
@@ -446,13 +447,13 @@ $telat = date('Hi') > 705;
                                                         <td><?= $data['nama'] ?></td>
                                                         <td><?= $data['kelas'] ?> / <?= $data['jurusan'] ?></td>
                                                         <td>
-                                                            <p class="p-2 w-100 btn btn-<?= $kehadiran['color']; ?> text-center">
-                                                                <b><?= $kehadiran['text']; ?></b>
+                                                            <p class="p-2 w-100 btn btn-<?= $kehadiran['color']; ?> text-center" id="kehadiran-<?= $data['nisn']; ?>">
+                                                                <b id="text-kehadiran-<?= $data['nisn']; ?>"><?= $kehadiran['text']; ?></b>
                                                             </p>
                                                         </td>
-                                                        <td class="text-center"><?= $absensi['absen_masuk'] ?? '-' ?></td>
-                                                        <td class="text-center"><?= $absensi['absen_pulang'] ?? '-' ?></td>
-                                                        <td class="text-center"><?= $absensi['ket'] ?? '-' ?></td>
+                                                        <td class="text-center" id="masuk-<?= $data['nisn']; ?>"><?= $absensi['absen_masuk'] ?? '-' ?></td>
+                                                        <td class="text-center" id="pulang-<?= $data['nisn']; ?>"><?= $absensi['absen_pulang'] ?? '-' ?></td>
+                                                        <td class="text-center" id="keterangan-<?= $data['nisn']; ?>"><?= $absensi['ket'] != '' ? $absensi['ket'] : '-' ?></td>
                                                         <td class="user-select-none text-center">
                                                         <button data-bs-toggle="modal" data-bs-target="#ubahModal" onclick="getDataKehadiran('<?= $data['nisn']; ?>', '<?= $filterTanggal ?>')" class="btn btn-primary p-2" id="<?= $absensi['nisn']; ?>">Edit</button>
                                                         <button onclick="if (confirm('Yakin ingin menghapus data kehadiran?')) { hapusKehadiran('<?= $data['nisn']; ?>'); } return false;" class="btn btn-danger p-2" id="<?= $absensi['nisn']; ?>">Delete</button>
@@ -588,8 +589,43 @@ $telat = date('Hi') > 705;
         });
     }
 
+    function kehadiran(kehadiran) {
+        kehadiran = Number(kehadiran); // pastikan jadi number
+        let text = '';
+        let color = '';
+
+        switch (kehadiran) {
+            case 1:
+                color = 'btn-success';
+                text = 'Hadir';
+                break;
+            case 2:
+                color = 'btn-warning';
+                text = 'Sakit';
+                break;
+            case 3:
+                color = 'btn-info';
+                text = 'Izin';
+                break;
+            case 4:
+                color = 'btn-danger';
+                text = 'Tanpa keterangan';
+                break;
+            case 0:
+            default:
+                color = 'btn-disabled';
+                text = 'Belum tersedia';
+                break;
+        }
+
+        return { color, text };
+    }
+
+
     function ubahKehadiran() {
         var form = $('#formUbah').serializeArray()
+        const warnaKehadiran = ['btn-success', 'btn-warning', 'btn-info', 'btn-danger'];
+        const stats = kehadiran(form[1]['value']);
 
         jQuery.ajax({
             url: "./?tab=edit-absensi",
@@ -605,8 +641,27 @@ $telat = date('Hi') > 705;
             },
             success: function(response, status, xhr) {
                 // console.log(status);
-                alert('Berhasil ubah kehadiran');
-                $('#refresh').html(response);
+                // alert('Berhasil ubah kehadiran');
+                console.log(stats);
+                console.log(form['2']['value']);
+                console.log(form['3']['value']);
+                
+                // document.getElementById('kehadiran-'+form[0]['value']).classList.remove(warnaKehadiran);
+                // mengubah col kehadiran
+                warnaKehadiran.forEach(warna => {
+                    document.getElementById('kehadiran-'+form[0]['value']).classList.remove(warna);
+                });
+                document.getElementById('kehadiran-'+form[0]['value']).classList.add(stats.color);
+                document.getElementById('text-kehadiran-'+form[0]['value']).innerHTML = stats.text;
+
+                // mengubah col jam masuk
+                document.getElementById('masuk-'+form[0]['value']).innerHTML = form[2]['value'];
+
+                // mengubah col jam masuk
+                document.getElementById('pulang-'+form[0]['value']).innerHTML = form[3]['value'];
+
+                // $('#text-kehadiran-'+form[1]['value']).html(stats.text);
+                // $('#refresh').html(response);
             },
             error: function(xhr, status, thrown) {
                 console.log(thrown);
