@@ -24,8 +24,7 @@ function SendMessage(string $target, string $message): bool|string
         ),
     ));
 
-    // $response = curl_exec($curl);
-    $response = true;
+    $response = curl_exec($curl);
 
     return $response;
 }
