@@ -51,9 +51,10 @@ require "../private/function/db_init.php";
                                 <img src="./resources/images/sekolah-login.jpeg" alt="login form" class="img-fluid"
                                     style="border-radius: 1rem 0 0 1rem; filter: blur(4px) brightness(.65);;" />
 
-                                <!-- Clock & date -->
-                                <div class="a-clock">
-                                    <?php include "../private/template/analog-clock.php"; ?>
+                                <!-- Clock & date --> 
+                                 <!-- # i think it's unecessary # -->
+                                <!-- <div class="a-clock">
+                                    <?php // include "../private/template/analog-clock.php"; ?>
                                 </div>
                                 <div id="d-clock"></div>
                                 <div class="display-date">
@@ -61,7 +62,7 @@ require "../private/function/db_init.php";
                                     <span id="daynum">00</span>
                                     <span id="month">month</span>
                                     <span id="year">0000</span>
-                                </div>
+                                </div> -->
 
                             </div>
                             <!-- END -->
