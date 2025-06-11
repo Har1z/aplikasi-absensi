@@ -429,7 +429,7 @@
     </div>
     
     <footer>
-        <p>© 2023 Twibbon Maker Pro | Semua pemrosesan dilakukan di perangkat Anda</p>
+        <p>© 2025 Twibbon MPLS 2025</p>
     </footer>
     
     <!-- Load FFmpeg for MP4 conversion -->
