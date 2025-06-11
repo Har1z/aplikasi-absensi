@@ -595,7 +595,7 @@
         function drawPreview() {
             if (!userPhoto || !frameVideo) return;
             
-            // ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
+            ctx.clearRect(0, 0, previewCanvas.width, previewCanvas.height);
             
             // Gambar foto pengguna dengan transformasi
             const scaledWidth = photoTransform.originalWidth * photoTransform.scale;
@@ -662,6 +662,63 @@
             }
         });
         
+        // Implementasi drag untuk foto (touch)
+        previewCanvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            if (!userPhoto || e.touches.length !== 1) return;
+            
+            const touch = e.touches[0];
+            photoTransform.isDragging = true;
+            photoTransform.dragStartX = touch.clientX - photoTransform.x;
+            photoTransform.dragStartY = touch.clientY - photoTransform.y;
+            zoomIndicator.style.display = 'block';
+        });
+        
+        previewCanvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            
+            // Handle single touch (dragging)
+            if (e.touches.length === 1 && photoTransform.isDragging && userPhoto) {
+                const touch = e.touches[0];
+                photoTransform.x = touch.clientX - photoTransform.dragStartX;
+                photoTransform.y = touch.clientY - photoTransform.dragStartY;
+            }
+            
+            // Handle pinch zoom
+            // if (e.touches.length === 2 && userPhoto) {
+            //     const touch1 = e.touches[0];
+            //     const touch2 = e.touches[1];
+                
+            //     const currentDistance = Math.hypot(
+            //         touch2.clientX - touch1.clientX,
+            //         touch2.clientY - touch1.clientY
+            //     );
+                
+            //     if (photoTransform.lastTouchDistance > 0) {
+            //         const scaleFactor = currentDistance / photoTransform.lastTouchDistance;
+            //         const newScale = photoTransform.scale * scaleFactor;
+                    
+            //         // Batasi zoom antara 0.1x dan 3x
+            //         photoTransform.scale = Math.max(0.1, Math.min(3, newScale));
+                    
+            //         // Perbarui slider dan tampilan
+            //         zoomSlider.value = photoTransform.scale;
+            //         zoomValue.textContent = `${Math.round(photoTransform.scale * 100)}%`;
+            //         zoomIndicator.textContent = `Zoom: ${Math.round(photoTransform.scale * 100)}%`;
+            //     }
+                
+            //     photoTransform.lastTouchDistance = currentDistance;
+            // }
+        });
+        
+        previewCanvas.addEventListener('touchend', (e) => {
+            photoTransform.isDragging = false;
+            photoTransform.lastTouchDistance = 0;
+            setTimeout(() => {
+                zoomIndicator.style.display = 'none';
+            }, 2000);
+        });
+
         // Event untuk slider zoom
         zoomSlider.addEventListener('input', (e) => {
             photoTransform.scale = parseFloat(e.target.value);
