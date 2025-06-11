@@ -837,6 +837,8 @@
         pngFrame = 'assets/preview.png';
         framePreview.src = pngFrame;
 
+        alert('Website ini mungkin tidak berfungsi dengan baik di beberapa perangkat.');
+
     </script>
 </body>
 </html>
