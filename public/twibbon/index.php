@@ -416,13 +416,13 @@
                     <span class="step-number">1</span> Unggah frame WebM dengan area transparan untuk foto
                 </div> -->
                 <div class="step">
-                    <span class="step-number">2</span> Unggah foto yang ingin Anda gunakan
+                    <span class="step-number">1</span> Unggah foto yang ingin Anda gunakan
                 </div>
                 <div class="step">
-                    <span class="step-number">3</span> Atur posisi dan zoom foto dengan drag & drop atau slider
+                    <span class="step-number">2</span> Atur posisi dan zoom foto dengan drag & drop atau slider
                 </div>
                 <div class="step">
-                    <span class="step-number">4</span> Hasilkan video dan unduh hasilnya
+                    <span class="step-number">3</span> Hasilkan video dan unduh hasilnya
                 </div>
             </div>
         </div>
